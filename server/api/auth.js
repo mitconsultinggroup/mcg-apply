@@ -8,8 +8,15 @@ const verifyToken = (req, res, next) => {
         jwt.verify(req.cookies.token, JWT_SECRET, function (err, decode) {
             if (!decode) {
                 req.user = undefined;
-                next();
-            } else if (err) req.user = undefined;
+                res.status(401).send({
+                    message: "invalid token",
+                });
+            } else if (err) {
+                req.user = undefined;
+                res.status(401).send({
+                    message: "invalid token",
+                });
+            }
             else {
                 User.findOne({
                     userid: decode.userid,
@@ -27,7 +34,9 @@ const verifyToken = (req, res, next) => {
         });
     } else {
         req.user = undefined;
-        next();
+        res.status(401).send({
+            message: "no token provided",
+        });
     }
 };
 module.exports = verifyToken;
