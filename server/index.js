@@ -10,6 +10,10 @@ app.use(express.static("../client/index.js"));
 // Body Parser
 app.use(bodyParser.json());
 
+// API
+import api from "./api/api.js";
+app.use("/api", api);
+
 const port = process.env.PORT || 5000;
 
 app.listen(port, () =>
