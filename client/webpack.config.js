@@ -15,7 +15,7 @@ const here = p => path.join(__dirname, p);
  * Entry
  */
 const entry = {
-    main: [here("index.js")]
+    main: [here("./src/index.js")]
 };
 
 /*
