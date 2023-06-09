@@ -95,6 +95,9 @@ var configObject = {
     },
     devtool: "inline-cheap-module-source-map",
     output,
+    devServer: {
+        historyApiFallback: true
+    },
     resolveLoader: {
         // Configure how Webpack finds `loader` modules.
         modules: [here("../node_modules")]
