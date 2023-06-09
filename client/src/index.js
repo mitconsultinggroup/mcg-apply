@@ -5,6 +5,7 @@ import Login from "./components/login.js";
 import SignUp  from "./components/signup.js";
 import Application from "./components/apply.js";
 import Events from "./components/events.js";
+import PublicEvents from "./components/publicEvents.js";
 
 import {
   createBrowserRouter,
@@ -14,13 +15,40 @@ import {
 // Styles
 import "./stylesheets/output.css";
 
+
 const router = createBrowserRouter([
+
+
+  {
+    path: "/events",
+    element: <Events />,
+  },
+
+  {
+    path: "/publicevents",
+    element: <PublicEvents />,
+  },
+
+
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
+
+  {
+    path: "/application",
+    element: <Application />,
+  },
+
+  {
+    path: "/login",
+    element: <Login />,
+  },
 
   {
     path: "/",
     element: <Login />,
   },
-
 
 ]);
 
