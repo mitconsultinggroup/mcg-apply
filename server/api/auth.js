@@ -143,3 +143,5 @@ router.get("/refresh-token", verifyToken, (req, res) => {
         message: "token refreshed",
     });
 });
+
+export default router;

@@ -8,4 +8,4 @@ mongoose.connect(MONGODB_URL, {
 
 const User = require("./user.js");
 
-module.exports = { User };
+export default User;
