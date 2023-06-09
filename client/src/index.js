@@ -1,6 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import Root from "./routes/root.js";
+import Login from "./components/login.js";
+import SignUp  from "./components/signup.js";
+import Application from "./components/apply.js";
+import Events from "./components/events.js";
 
 import {
   createBrowserRouter,
@@ -11,9 +15,10 @@ import {
 import "./stylesheets/output.css";
 
 const router = createBrowserRouter([
+
   {
     path: "/",
-    element: <Root />,
+    element: <Login />,
   },
 
 
