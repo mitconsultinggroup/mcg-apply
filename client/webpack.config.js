@@ -22,7 +22,7 @@ const entry = {
  * Output
  */
 const output = {
-    path: here("../public/dist"),
+    path: here("/public/dist"),
     filename: "[name].bundle.js"
 };
 
@@ -46,7 +46,7 @@ const modules = {
             exclude: [/node_modules/],
             use: [
                 {
-                    loader: 'style-loader'
+                    loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader
                 },
                 {
                     loader: 'css-loader',
@@ -55,7 +55,20 @@ const modules = {
                     loader: 'sass-loader'
                 }
             ]
-
+        },
+        {
+            test: /\.(jpg|png)$/,
+            use: [
+                {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 8192, // Limit the base64 inline image size
+                        name: '[name].[ext]',
+                        outputPath: 'assets/', // Output path for the images
+                        publicPath: 'assets/' // Public URL path for the images
+                    }
+                }
+            ]
         }
     ]
 };
@@ -69,16 +82,14 @@ const plugins = [
         chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
     }),
     new HtmlWebpackPlugin({
-        template: here("../public/index.html")
-    }),
+        template: here("/public/index.html")
+    })
 ];
 
 // Enabling HMR only if dev mode is enabled
 if (devMode) {
     plugins.push(new webpack.HotModuleReplacementPlugin())
 }
-
-
 
 /*
  * Exporting configuration
@@ -87,7 +98,7 @@ var configObject = {
     mode: env,
     entry,
     devServer: {
-        port: 3000,
+        port: 5000,
         hot: "only",
         proxy: {
             "/api": "http://localhost:5000"
@@ -99,8 +110,7 @@ var configObject = {
         historyApiFallback: true
     },
     resolveLoader: {
-        // Configure how Webpack finds `loader` modules.
-        modules: [here("../node_modules")]
+        modules: [here("/node_modules")]
     },
     module: modules,
     plugins
@@ -108,5 +118,5 @@ var configObject = {
 
 module.exports = (env, argv) => {
     configObject.mode = argv.mode;
-    return configObject
+    return configObject;
 };
