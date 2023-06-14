@@ -4,7 +4,7 @@ const router = express.Router();
 import { v4 } from "uuid";
 const uuid = v4;
 
-import { User } from "../db/user.js";
+import { User } from "../db/database.js";
 import verifyToken from "./token.js";
 
 const hasRequiredSignup = (req) => {
