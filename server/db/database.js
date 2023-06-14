@@ -1,11 +1,15 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 
 const MONGODB_URL = process.env.MONGODB_URL;
 
 mongoose.connect(MONGODB_URL, {
     useNewUrlParser: true,
-}).catch(error => console.log(error.reason));
+}).catch(error => console.log(error));
 
-const User = require("./user.js");
+import { User } from "./user.js";
 
-export default { User };
+export { User };
