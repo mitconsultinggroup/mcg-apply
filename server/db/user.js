@@ -33,4 +33,4 @@ const DataSchema = new mongoose.Schema({
 
 const DataModel = mongoose.model("user", DataSchema);
 
-export default DataModel;
+export { DataModel as User };

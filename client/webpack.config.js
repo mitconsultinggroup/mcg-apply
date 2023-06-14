@@ -102,12 +102,10 @@ var configObject = {
             '/api': 'http://localhost:5000',
             secure: false
         },
+        historyApiFallback: true
     },
     devtool: "inline-cheap-module-source-map",
     output,
-    devServer: {
-        historyApiFallback: true
-    },
     resolveLoader: {
         modules: [here("/node_modules")]
     },
