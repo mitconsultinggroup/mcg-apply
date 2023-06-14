@@ -8,17 +8,21 @@ import { User } from "../db/user.js";
 import verifyToken from "./token.js";
 
 const hasRequiredSignup = (req) => {
-    const { firstname, lastname, email, password } = req.body;
-    if (!lastname || lastname.length < 1) {
-        return false;
-    }
-    if (!firstname || firstname.length < 1) {
-        return false;
-    }
-    if (!email || email.length < 1) {
-        return false;
-    }
-    if (!password || password.length < 1) {
+    try {
+        const { firstname, lastname, email, password } = req.body;
+        if (!lastname || lastname.length < 1) {
+            return false;
+        }
+        if (!firstname || firstname.length < 1) {
+            return false;
+        }
+        if (!email || email.length < 1) {
+            return false;
+        }
+        if (!password || password.length < 1) {
+            return false;
+        }
+    } catch (error) {
         return false;
     }
     return true;
@@ -68,7 +72,14 @@ router.post("/signup", async (req, res) => {
 });
 
 router.post("/login", verifyToken, async (req, res) => {
-    if (!req.body.email || !req.body.password) {
+    try {
+        if (!req.body.email || !req.body.password) {
+            res.status(400).send({
+                message: "missing required fields",
+            });
+            return;
+        }
+    } catch (error) {
         res.status(400).send({
             message: "missing required fields",
         });

@@ -98,11 +98,10 @@ var configObject = {
     mode: env,
     entry,
     devServer: {
-        port: 5000,
-        hot: "only",
         proxy: {
-            "/api": "http://localhost:5000"
-        }
+            '/api': 'http://localhost:5000',
+            secure: false
+        },
     },
     devtool: "inline-cheap-module-source-map",
     output,

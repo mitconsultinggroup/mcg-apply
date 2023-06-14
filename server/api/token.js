@@ -4,7 +4,7 @@ import User from "../db/user.js";
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const verifyToken = (req, res, next) => {
-    if (req.cookies.token) {
+    if (req.cookies && req.cookies.token) {
         jwt.verify(req.cookies.token, JWT_SECRET, function (err, decode) {
             if (!decode) {
                 req.user = undefined;
