@@ -30,7 +30,7 @@ const hasRequiredSignup = (req) => {
 
 router.post("/signup", async (req, res) => {
     if (!hasRequiredSignup(req)) {
-        res.status(400).send({
+        res.status(400).json({
             message: "missing required fields",
         });
         return;
@@ -40,7 +40,7 @@ router.post("/signup", async (req, res) => {
 
     let existingUser = await User.findOne({ email: req.body.email });
     if (existingUser) {
-        res.status(400).send({
+        res.status(400).json({
             message: "user already exists",
         });
         return;
@@ -60,11 +60,11 @@ router.post("/signup", async (req, res) => {
 
     newUser.save((err, user) => {
         if (err) {
-            res.status(500).send({
+            res.status(500).json({
                 message: "error saving user in database",
             });
         } else {
-            res.status(200).send({
+            res.status(200).json({
                 message: "user saved successfully",
             });
         }
@@ -74,13 +74,13 @@ router.post("/signup", async (req, res) => {
 router.post("/login", verifyToken, async (req, res) => {
     try {
         if (!req.body.email || !req.body.password) {
-            res.status(400).send({
+            res.status(400).json({
                 message: "missing required fields",
             });
             return;
         }
     } catch (error) {
-        res.status(400).send({
+        res.status(400).json({
             message: "missing required fields",
         });
         return;
@@ -90,7 +90,7 @@ router.post("/login", verifyToken, async (req, res) => {
 
     let existingUser = await User.findOne({ email: email });
     if (!existingUser) {
-        res.status(400).send({
+        res.status(400).json({
             message: "invalid credentials",
         });
         return;
@@ -99,7 +99,7 @@ router.post("/login", verifyToken, async (req, res) => {
     const match = await bcrypt.compare(password, existingUser.password);
 
     if (!match) {
-        res.status(400).send({
+        res.status(400).json({
             message: "invalid credentials",
         });
         return;
@@ -121,14 +121,14 @@ router.post("/login", verifyToken, async (req, res) => {
         sameSite: true,
     });
 
-    res.status(200).send({
+    res.status(200).json({
         message: "login successful",
     });
 });
 
 router.get("/logout", verifyToken, (req, res) => {
     res.clearCookie("token");
-    res.status(200).send({
+    res.status(200).json({
         message: "logout successful",
     });
 });
@@ -150,7 +150,7 @@ router.get("/refresh-token", verifyToken, (req, res) => {
         sameSite: true,
     });
 
-    res.status(200).send({
+    res.status(200).json({
         message: "token refreshed",
     });
 });

@@ -8,12 +8,12 @@ const verifyToken = (req, res, next) => {
         jwt.verify(req.cookies.token, JWT_SECRET, function (err, decode) {
             if (!decode) {
                 req.user = undefined;
-                res.status(401).send({
+                res.status(401).json({
                     message: "invalid token",
                 });
             } else if (err) {
                 req.user = undefined;
-                res.status(401).send({
+                res.status(401).json({
                     message: "invalid token",
                 });
             }
@@ -22,7 +22,7 @@ const verifyToken = (req, res, next) => {
                     userid: decode.userid,
                 }).exec((err, user) => {
                     if (err) {
-                        res.status(500).send({
+                        res.status(500).json({
                             message: "error finding authenticated user in database",
                         });
                     } else {
@@ -34,7 +34,7 @@ const verifyToken = (req, res, next) => {
         });
     } else {
         req.user = undefined;
-        res.status(401).send({
+        res.status(401).json({
             message: "no token provided",
         });
     }
