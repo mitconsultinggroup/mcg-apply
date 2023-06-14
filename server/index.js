@@ -9,8 +9,6 @@ dotenv.config();
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, "../client/public/dist/")))
-
 // Helmet
 app.use(
     helmet({
@@ -30,6 +28,13 @@ import api from "./api/api.js";
 app.use("/api", api);
 
 const port = process.env.PORT || 5000;
+
+// Serve production build
+app.use(express.static(path.join(__dirname, "../client/public/dist/")))
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/public/dist/index.html"));
+});
 
 app.listen(port, () =>
     console.log(`Server started on port: 5000`)
