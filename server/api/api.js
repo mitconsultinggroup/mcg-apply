@@ -5,4 +5,8 @@ const router = express.Router();
 import auth from './auth.js';
 router.use("/auth", auth);
 
+// Event routes (sign into event)
+import events from './events.js';
+router.use("/events", events);
+
 export default router;

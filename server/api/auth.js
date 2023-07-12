@@ -42,7 +42,7 @@ router.post("/signup", async (req, res) => {
 
   let existingUser = await User.findOne({ email: req.body.email });
   if (existingUser) {
-    res.status(400).json({
+    res.status(409).json({
       message: "user already exists",
     });
     return;
@@ -58,6 +58,10 @@ router.post("/signup", async (req, res) => {
     email: email,
     password: savedPassword,
     usertype: "candidate",
+    userData: {
+      feedback: {},
+      events: {},
+    },
   });
 
   newUser
@@ -74,7 +78,7 @@ router.post("/signup", async (req, res) => {
     });
 });
 
-router.post("/login", verifyToken, async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     if (!req.body.email || !req.body.password) {
       res.status(400).json({
