@@ -1,12 +1,16 @@
 import React from "react";
 import PublicHeader from "./publicHeader";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 export default function SignUpForm() {
   const [firstname, setFirstName] = useState("")
   const [lastname, setLastName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
+
+  const navigate = useNavigate()
 
   const submitSignup = () => {
     // Do input validation
@@ -24,13 +28,16 @@ export default function SignUpForm() {
 
     fetch(url, options).then(
       res => {
-        console.log(res)
-        res.json()
+        return res.json()
       }
     ).then(
       res => {
-        console.log(res)
-
+        if (res.status === 200) {
+          navigate("/events")
+        }
+        else {
+          setError(res.message)
+        }
       }
     )
   }
