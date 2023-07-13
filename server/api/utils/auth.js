@@ -43,7 +43,7 @@ router.post("/signup", async (req, res) => {
   let existingUser = await User.findOne({ email: req.body.email });
   if (existingUser) {
     res.status(409).json({
-      message: "user already exists",
+      message: "email already signed up",
     });
     return;
   }
@@ -59,15 +59,30 @@ router.post("/signup", async (req, res) => {
     password: savedPassword,
     usertype: "candidate",
     userData: {
-      feedback: {},
+      feedback: [],
       events: {},
-      application: {}
+      application: {},
     },
   });
 
   newUser
     .save()
     .then((saved) => {
+      const token = jwt.sign(
+        {
+          userid: saved.userid,
+        },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: process.env.JWT_EXPIRES_IN,
+        }
+      );
+
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: false,
+        sameSite: true,
+      });
       res.status(200).json({
         message: "user created",
       });
