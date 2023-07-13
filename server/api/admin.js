@@ -2,11 +2,8 @@ import express from "express";
 import bcrypt from "bcrypt";
 
 const router = express.Router();
-
-import { v4 } from "uuid";
-
 import { Config } from "../db/database.js";
-import verifyToken from "./token.js";
+import verifyToken from "./utils/token.js";
 
 const isAdminMiddleware = (req, res, next) => {
     if (req.user.usertype != "admin") {

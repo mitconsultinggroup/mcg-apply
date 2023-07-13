@@ -1,13 +1,9 @@
 import express from "express";
-import bcrypt from "bcrypt";
+
+import { Config } from "../../db/database.js";
+import verifyToken from "../utils/token.js"
 
 const router = express.Router();
-
-import { v4 } from "uuid";
-const uuid = v4;
-
-import { Config } from "../db/database.js";
-import verifyToken from "./token.js";
 
 router.post("/event-signin", verifyToken, async (req, res) => {
     Config.findOne({

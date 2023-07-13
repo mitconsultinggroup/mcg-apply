@@ -3,37 +3,39 @@ import PublicHeader from "./publicHeader";
 import { useState } from "react";
 
 export default function SignUpForm() {
-    const [firstname, setFirstName] = useState("")
-    const [lastname, setLastName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+  const [firstname, setFirstName] = useState("")
+  const [lastname, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
-    const submitSignup = () =>{
-        // Do input validation
-        // input cleaning
-        const url = "/api/auth/signup"
-        const data = {firstname, lastname, email, password}
-        const options = {
-            method: "POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            credentials:"include",
-            body: JSON.stringify(data)
-        }
-
-        fetch(url,options).then(
-            res => {console.log(res)
-                    res.json()}
-        ).then(
-            res=>{
-                console.log(res)
-
-            }
-        )
+  const submitSignup = () => {
+    // Do input validation
+    // input cleaning
+    const url = "/api/auth/signup"
+    const data = { firstname, lastname, email, password }
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include",
+      body: JSON.stringify(data)
     }
-    
-    return (
+
+    fetch(url, options).then(
+      res => {
+        console.log(res)
+        res.json()
+      }
+    ).then(
+      res => {
+        console.log(res)
+
+      }
+    )
+  }
+
+  return (
     <div className="bg-gray-50 dark:bg-gray-900">
       <div>
         <PublicHeader />
@@ -60,7 +62,7 @@ export default function SignUpForm() {
                   placeholder=""
                   required=""
                   value={firstname}
-                  onChange={(e)=>setFirstName(e.target.value)}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
               <div>
@@ -77,7 +79,7 @@ export default function SignUpForm() {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder=""
                   required=""
-                  onChange={(e)=> setLastName(e.target.value)}
+                  onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
               <div>
@@ -94,7 +96,7 @@ export default function SignUpForm() {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="kerb@mit.edu"
                   required=""
-                  onChange={(e)=> setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
 
                 />
               </div>
@@ -112,7 +114,7 @@ export default function SignUpForm() {
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required=""
-                  onChange={(e)=> setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
 
                 />
               </div>

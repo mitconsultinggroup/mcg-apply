@@ -1,12 +1,17 @@
-import express from 'express';
+import express from "express";
+import auth from "./utils/auth.js";
+import events from "./candidate/events.js";
+import application from "./candidate/application.js";
+
 const router = express.Router();
 
 // User authentication (signup, login, logout)
-import auth from './auth.js';
 router.use("/auth", auth);
 
 // Event routes (sign into event)
-import events from './events.js';
 router.use("/events", events);
+
+// Application routes (submit application)
+router.use("/application", application);
 
 export default router;
