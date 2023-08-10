@@ -1,6 +1,7 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import { v4 } from "uuid";
+import jwt from "jsonwebtoken";
 
 import { User } from "../../db/database.js";
 import verifyToken from "./token.js";

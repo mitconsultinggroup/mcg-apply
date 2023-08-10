@@ -2,11 +2,12 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import Root from "./routes/root.js";
 import Login from "./routes/login.js";
-import SignUp  from "./routes/signup.js";
-import Application from "./components/apply.js";
-import Events from "./components/events.js";
-import PublicEvents from "./components/publicEvents.js";
-import FeedbackForm from "./components/FeedbackForm.js";
+import SignUp from "./routes/signup.js";
+import Application from "./routes/apply.js";
+import Events from "./routes/events.js";
+import PublicEvents from "./routes/publicEvents.js";
+import FeedbackForm from "./routes/feedbackForm.js";
+import Logout from "./routes/logout.js";
 
 import {
   createBrowserRouter,
@@ -56,6 +57,11 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+
+  {
+    path: "/logout",
+    element: <Logout />,
   },
 
   {

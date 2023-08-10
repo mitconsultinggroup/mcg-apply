@@ -6,9 +6,9 @@ const router = express.Router();
 
 router.get("/", verifyToken, async (req, res) => {
     let data = {
-        firstname: req.user.userData.firstname,
-        lastname: req.user.userData.lastname,
-        email: req.user.userData.email,
+        firstname: req.user.firstname,
+        lastname: req.user.lastname,
+        email: req.user.email,
     };
     res.status(200).json({
         message: "success",
