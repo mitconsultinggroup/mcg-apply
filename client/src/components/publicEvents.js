@@ -20,7 +20,7 @@ export default function PublicEvents() {
                             <a href="#">
                                 <h5 className=" text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Meet the Team</h5>
                             </a>
-                            <p className=" text-center mb-3 font-normal text-gray-700 dark:text-gray-400">7:30 - 8:30pm, September 13th Room 1-190</p>
+                            <p className=" text-center mb-3 font-normal text-gray-700 dark:text-gray-400">7:30 - 8:30pm | September 13th | Room 1-190</p>
                             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Meet current members of MCG and learn more about MCG's recruitment process during our first recruitment event of the semester.</p>
                         </div>
                     </div>
@@ -29,7 +29,7 @@ export default function PublicEvents() {
                         <a href="#">
                             <h5 className="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">DEI Panel</h5>
                         </a>
-                        <p className="text-center mb-3 font-normal text-gray-700 dark:text-gray-400">7:30 - 8:30pm, September 14th Room 1-190</p>
+                        <p className="text-center mb-3 font-normal text-gray-700 dark:text-gray-400">7:30 - 8:30pm | September 14th | Room 1-190</p>
                         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Talk to current women and BIPOC within MCG. Hear about their experiences and how MCG is trying ot create a more inclusive environment.</p>
                     </div>
 
@@ -45,7 +45,7 @@ export default function PublicEvents() {
                         <a href="#">
                             <h5 className="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Cheesecake Social</h5>
                         </a>
-                        <p className="text-center mb-3 font-normal text-gray-700 dark:text-gray-400">7-9pm | September 15th | Room 6-120</p>
+                        <p className="text-center mb-3 font-normal text-gray-700 dark:text-gray-400">7-9pm | September 15th | Invite Only</p>
                         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Work on your resume wiht the help of MCG consultants who have landed offeres at top consulting, finance, and tech companies.</p>
                     </div>
 
@@ -53,7 +53,7 @@ export default function PublicEvents() {
                         <a href="#">
                             <h5 className="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Case Workshop</h5>
                         </a>
-                        <p className="text-center mb-3 font-normal text-gray-700 dark:text-gray-400">7-9pm | September 15th | Room 6-120</p>
+                        <p className="text-center mb-3 font-normal text-gray-700 dark:text-gray-400">7-9pm | September 15th | Invite Only </p>
                         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Work on your resume wiht the help of MCG consultants who have landed offeres at top consulting, finance, and tech companies.</p>
 
                     </div>

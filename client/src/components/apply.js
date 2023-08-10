@@ -1,7 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './header';
 
 export default function Application() {
+    const [file, setFile] = useState(null);
+    const [base64URL, setbase64URL] = useState("")
+
+    const getBase64 = file => {
+        return new Promise(resolve => {
+            let fileInfo;
+            let baseURL = "";
+            // Make new FileReader
+            let reader = new FileReader();
+
+            // Convert the file to base64 text
+            reader.readAsDataURL(file);
+
+            // on reader load somthing...
+            reader.onload = () => {
+            // Make a fileInfo Object
+            console.log("Called", reader);
+            baseURL = reader.result;
+            console.log(baseURL);
+            resolve(baseURL);
+            };
+            console.log(fileInfo);
+        });
+    };
+    
+    const handleFileInputChange = e => {
+        console.log(e.target.files[0]);
+        file = e.target.files[0];
+
+        getBase64(file)
+            .then(result => {
+            file["base64"] = result;
+            console.log("File Is", file);
+            setbase64URL(result)
+            })
+            .catch(err => {
+            console.log(err);
+            });
+
+        setFile(e.target.files[0])
+    };
+    
+
     return (
         <div className="bg-gray-50 dark:bg-gray-900">
         <div>
@@ -33,12 +76,12 @@ export default function Application() {
 
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Profile Image</label>
-                            <input class="block w-full text-sm font-medium text-gray-900 border border-gray-300 rounded-lg p-1.5 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"/>
+                            <input class="block w-full text-sm font-medium text-gray-900 border border-gray-300 rounded-lg p-1.5 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" onChange={handleFileInputChange} id="file_input" type="file"/>
                         </div>
 
                         <div>
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Resume Upload</label>
-                            <input class="block w-full text-sm font-medium text-gray-900 border border-gray-300 rounded-lg p-1.5 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"/>
+                            <input class="block w-full text-sm font-medium text-gray-900 border border-gray-300 rounded-lg p-1.5 cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" onChange={handleFileInputChange} id="file_input" type="file"/>
                         </div>
 
                         <div>
