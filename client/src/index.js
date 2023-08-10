@@ -6,6 +6,7 @@ import SignUp  from "./routes/signup.js";
 import Application from "./components/apply.js";
 import Events from "./components/events.js";
 import PublicEvents from "./components/publicEvents.js";
+import FeedbackForm from "./components/FeedbackForm.js";
 
 import {
   createBrowserRouter,
@@ -27,10 +28,14 @@ const router = createBrowserRouter([
 
 
   {
-    path: "/feedback",
+    path: "/applicants",
     element: <Applicants />,
   },
 
+  {
+    path: "/feedback",
+    element: <FeedbackForm />,
+  },
 
   {
     path: "/publicevents",

@@ -56,7 +56,6 @@ export default function SignUpForm() {
             <div className="space-y-4 md:space-y-6">
               <div>
                 <label
-                  for="firstname"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   First Name
@@ -74,7 +73,6 @@ export default function SignUpForm() {
               </div>
               <div>
                 <label
-                  for="lastname"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Last Name
@@ -91,7 +89,6 @@ export default function SignUpForm() {
               </div>
               <div>
                 <label
-                  for="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Your email
@@ -109,7 +106,6 @@ export default function SignUpForm() {
               </div>
               <div>
                 <label
-                  for="password"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Password
