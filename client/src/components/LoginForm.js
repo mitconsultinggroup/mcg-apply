@@ -41,14 +41,14 @@ export default function LoginForm() {
     };
 
     return (
-        <div className="bg-gray-50 ">
+        <div className="bg-gray-50 dark:bg-gray-900">
             <div>
                 <PublicHeader />
             </div>
             <div className="flex flex-col items-center justify-center px-6 mx-auto md:h-screen lg:py-0">
-                <div className="mb-4 w-full bg-white rounded-lg shadow ">
+                <div className="mb-4 w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 ">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                        <h1 className="text-xl font-bold text-center leading-tight tracking-tight text-gray-900 ">
+                        <h1 className="text-xl font-bold text-center leading-tight tracking-tight text-gray-900">
                             Login
                         </h1>
                         <div className="space-y-4 md:space-y-6">
@@ -64,13 +64,13 @@ export default function LoginForm() {
                                     type="email"
                                     name="email"
                                     id="email"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     placeholder="kerb@mit.edu"
                                     required=""
                                 />
                             </div>
                             <div>
-                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                <label className="block mb-2 text-sm font-medium text-gray-900 ">
                                     Password:
                                 </label>
                                 <input
