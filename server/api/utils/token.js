@@ -16,20 +16,19 @@ const verifyToken = (req, res, next) => {
                 res.status(401).json({
                     message: "invalid token",
                 });
-            }
-            else {
+            } else {
                 User.findOne({
                     userid: decode.userid,
-                }).exec((err, user) => {
-                    if (err) {
-                        res.status(500).json({
-                            message: "error finding authenticated user in database",
-                        });
-                    } else {
+                })
+                    .then((user) => {
                         req.user = user;
                         next();
-                    }
-                });
+                    })
+                    .catch((err) => {
+                        res.status(500).json({
+                            message: "Error finding authenticated user in database",
+                        });
+                    });
             }
         });
     } else {

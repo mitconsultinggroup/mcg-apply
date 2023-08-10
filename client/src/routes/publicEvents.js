@@ -1,11 +1,11 @@
 import React from 'react';
-import PublicHeader from './publicHeader';
+import PublicHeader from '../components/publicHeader';
 
 export default function PublicEvents() {
     return (
         <div>
             <div>
-                <PublicHeader/>
+                <PublicHeader />
 
             </div>
 
@@ -62,4 +62,4 @@ export default function PublicEvents() {
             </div>
         </div>
     )
-  }
+}

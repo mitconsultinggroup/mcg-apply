@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 export default function PublicHeader() {
   return (
-    <nav className="text-sm text-xl bg-white border-gray-200 dark:bg-gray-900">
+    <nav className="text-xl bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="https://mitconsulting.group/" className="flex items-center">
           <img src={Logo} className="h-8 mr-3" alt="MCG Logo" />
@@ -14,8 +14,8 @@ export default function PublicHeader() {
           <span className="sr-only">Open main menu</span>
           <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"></path></svg>
         </button>
-      <div>
-      </div>
+        <div>
+        </div>
         {/* <div className="block lg:hidden">
             <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
               <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
@@ -34,7 +34,7 @@ export default function PublicHeader() {
             </a>
           </div>
         </div> */}
-    
+
         <div className="hidden w-full md:block md:w-auto">
           <div className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <Link to="/publicevents">
