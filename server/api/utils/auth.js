@@ -150,14 +150,14 @@ router.post("/login", async (req, res) => {
   });
 });
 
-router.get("/logout", verifyToken, (req, res) => {
+router.post("/logout", (req, res) => {
   res.clearCookie("token");
   res.status(200).json({
     message: "logout successful",
   });
 });
 
-router.get("/refresh-token", verifyToken, (req, res) => {
+router.post("/refresh-token", verifyToken, (req, res) => {
   const token = jwt.sign(
     {
       userid: req.user.userid,

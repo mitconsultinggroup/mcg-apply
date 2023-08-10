@@ -8,7 +8,7 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/candidate/me', {
+    fetch('/api/me', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

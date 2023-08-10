@@ -15,16 +15,16 @@ export default function Header() {
     fetch("/api/me").then(
       (response) => {
         if (response.ok) {
-          return response.json()
+          response.json().then(data => {
+            setUserData(data.data);
+            setIsLoading(false);
+          })
         }
         else {
           navigate("/login")
         }
       }
-    ).then((data) => {
-      setUserData(data.data);
-      setIsLoading(false);
-    });
+    )
   }, [navigate]);
 
   return (
