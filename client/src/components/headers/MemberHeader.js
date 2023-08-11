@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from "../assets/logos/mcg-long-logo-noback.png"
+import Logo from "../../assets/logos/mcg-long-logo-noback.png"
 import { Link } from "react-router-dom"
 import { useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
@@ -13,7 +13,6 @@ export default function MemberHeader({ firstname }) {
   useEffect(() => {
     fetch("/api/me").then(
       (response) => {
-        console.log(response)
 
         if (response.ok) {
           return response.json()

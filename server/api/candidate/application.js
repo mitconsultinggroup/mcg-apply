@@ -6,12 +6,11 @@ router.use(verifyToken);
 
 const hasRequiredFields = (req, res, next) => {
     if (
-        !req.body.name ||
+        !req.body.firstname ||
+        !req.body.lastname ||
         !req.body.email ||
-        !req.body.gradYear ||
-        !req.body.major ||
-        !req.body.whyJoin ||
-        req.body.resume
+        !req.body.classYear ||
+        !req.body.resume
     ) {
         res.status(400).json({
             message: "missing required fields",
@@ -23,35 +22,54 @@ const hasRequiredFields = (req, res, next) => {
 
 router.get("/get-application", async (req, res) => {
     const user = req.user;
-    res.status(200).json({
-        application: user.userData.application,
-    });
+    if (user.userData && user.userData.application) {
+        res.status(200).json({
+            application: user.userData.application,
+        });
+    }
+    else {
+        res.status(200).json({
+            application: {},
+        });
+    }
 });
 
 router.post("/submit-application", hasRequiredFields, async (req, res) => {
     const user = req.user;
 
-    const application = user.userData.application;
+    if (user.userData && user.userData.application) {
+        var application = user.userData.application;
+    }
+    else {
+        var application = {};
+    }
 
-    application.name = req.body.name;
+    application.firstname = req.body.firstname;
+    application.lastname = req.body.lastname;
     application.email = req.body.email;
-    application.gradYear = req.body.gradYear;
-    application.major = req.body.major;
-    application.whyJoin = req.body.whyJoin;
-    application.resume = req.body.resume;
+    application.classYear = req.body.classYear;
+    if (req.body.profileImg) {
+        application.profileImg = req.body.profileImg;
+    }
+    if (req.body.resume) {
+        application.resume = req.body.resume;
+    }
+    application.opt1 = req.body.opt1;
+    application.opt2 = req.body.opt2;
+
     application.submittedAt = Date.now();
 
-    user.save((err) => {
-        if (err) {
-            res.status(500).json({
-                message: "error saving application to user",
-            });
-        } else {
-            res.status(200).json({
-                message: "application saved to user",
-            });
-        }
+    if (!user.userData) {
+        user.userData = {};
+    }
+    user.userData.application = application;
+    user.markModified("userData");
+    await user.save()
+
+    return res.status(200).json({
+        message: "application submitted"
     });
+
 });
 
 export default router;

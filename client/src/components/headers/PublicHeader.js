@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from "../assets/logos/mcg-long-logo-noback.png"
+import Logo from "../../assets/logos/mcg-long-logo-noback.png"
 import { Link } from "react-router-dom"
 import { useState } from 'react';
 

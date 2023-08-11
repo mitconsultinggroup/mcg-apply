@@ -25,7 +25,7 @@ const DataSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    userdata: {
+    userData: {
         type: Object,
         required: false,
     }

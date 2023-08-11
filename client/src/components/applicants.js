@@ -1,5 +1,5 @@
 import React from 'react';
-import MemberHeader from './memberHeader';
+import MemberHeader from './headers/MemberHeader';
 import PNMProfile from './pnmprofile';
 
 export default function Applicants() {

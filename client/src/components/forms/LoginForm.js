@@ -1,5 +1,5 @@
 import React from "react";
-import PublicHeader from "./publicHeader";
+import PublicHeader from "../headers/PublicHeader";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 

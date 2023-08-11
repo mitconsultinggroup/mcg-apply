@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-import PublicHeader from "../components/publicHeader";
+import PublicHeader from "../components/headers/PublicHeader";
 
 export default function Logout() {
     const navigate = useNavigate();

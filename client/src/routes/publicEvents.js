@@ -1,5 +1,5 @@
 import React from 'react';
-import PublicHeader from '../components/publicHeader';
+import PublicHeader from '../components/headers/PublicHeader';
 
 export default function PublicEvents() {
     return (

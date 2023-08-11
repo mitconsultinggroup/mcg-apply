@@ -8,25 +8,19 @@ import Events from "./routes/events.js";
 import PublicEvents from "./routes/publicEvents.js";
 import FeedbackForm from "./routes/feedbackForm.js";
 import Logout from "./routes/logout.js";
+import Admin from "./routes/admin.js";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Styles
 import "./stylesheets/output.css";
 import Applicants from "./components/applicants.js";
 
-
 const router = createBrowserRouter([
-
-
   {
     path: "/events",
     element: <Events />,
   },
-
 
   {
     path: "/applicants",
@@ -42,7 +36,6 @@ const router = createBrowserRouter([
     path: "/publicevents",
     element: <PublicEvents />,
   },
-
 
   {
     path: "/signup",
@@ -65,10 +58,14 @@ const router = createBrowserRouter([
   },
 
   {
+    path: "/admin",
+    element: <Admin />,
+  },
+
+  {
     path: "/",
     element: <Login />,
   },
-
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

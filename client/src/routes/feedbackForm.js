@@ -1,5 +1,5 @@
 import React from 'react';
-import MemberHeader from '../components/memberHeader';
+import MemberHeader from '../components/headers/MemberHeader';
 import { useState } from "react"
 
 

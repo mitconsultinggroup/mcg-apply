@@ -18,7 +18,11 @@ app.use(
 );
 
 // Body Parser
-app.use(bodyParser.json());
+app.use(bodyParser.json(
+    {
+        limit: "50mb",
+    }
+));
 
 // Cookie Parser
 app.use(cookieParser());
