@@ -1,6 +1,6 @@
 import React from 'react';
 import MemberHeader from './headers/MemberHeader';
-import PNMProfile from './pnmprofile';
+// import PNMProfile from './pnmprofile';
 
 export default function Applicants() {
     return (
@@ -25,11 +25,11 @@ export default function Applicants() {
             </div>
 
             <div className="flex flex-wrap gap-10 py-10 px-10">
+                {/* <PNMProfile />
                 <PNMProfile />
                 <PNMProfile />
                 <PNMProfile />
-                <PNMProfile />
-                <PNMProfile />
+                <PNMProfile /> */}
             </div>
         </div>
     )

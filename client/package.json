@@ -6,14 +6,15 @@
   "scripts": {
     "set_env_dev": "SET \"NODE_ENV=dev\"",
     "set_env_prod": "SET \"NODE_ENV=production\"",
-    "start": "SET \"NODE_ENV=development\" && webpack-dev-server --config webpack.config.js --mode=development --open --hot \"true\" ",
-    "build": "rimraf dist && SET \"NODE_ENV=production\" && webpack --mode=production --config webpack.config.js"
+    "start": "export NODE_ENV\"=development\" && webpack-dev-server --config webpack.config.js --mode=development --open --hot \"true\" ",
+    "build": "rimraf dist && export NODE_ENV=\"production\" && webpack --mode=production --config webpack.config.js"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.12.1",
-    "react-router-dom": "^6.12.1"
+    "react-router-dom": "^6.12.1",
+    "url-loader": "^4.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.5",

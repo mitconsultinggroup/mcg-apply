@@ -5,9 +5,9 @@
   "main": "server/index.js",
   "scripts": {
     "babel-node": "babel-node ./server/index.js",
-    "dev": "concurrently \"npm run server\" \"cd client && SET \"NODE_ENV=development\"  && npm start\"",
-    "start": "concurrently \"npm run server\" \"cd client && SET \"NODE_ENV=production\" && npm run build\"",
-    "server": "nodemon --exec \"npm run babel-node\"",
+    "dev": "concurrently \"npm run server\" \"cd client && export NODE_ENV=\"development\"  && npm start\"",
+    "start": "concurrently \"npm run server\" \"cd client && export NODE_ENV=\"production\" && npm run build\"",
+    "server": "npm run babel-node",
     "watch": "npx tailwindcss -i ./client/src/stylesheets/input.css -o ./client/src/stylesheets/output.css --watch"
   },
   "dependencies": {

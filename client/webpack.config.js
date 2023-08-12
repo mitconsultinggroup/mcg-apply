@@ -82,8 +82,9 @@ const plugins = [
         chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
     }),
     new HtmlWebpackPlugin({
-        template: here("/public/index.html")
-    })
+        template: here("/public/index.html"),
+        favicon: here("/public/favicon.ico"),
+    }),
 ];
 
 // Enabling HMR only if dev mode is enabled
