@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom/client";
 import Root from "./routes/root.js";
 import Login from "./routes/login.js";
 import SignUp from "./routes/signup.js";
-import Application from "./routes/apply.js";
+import Application from "./routes/application.js";
 import Events from "./routes/events.js";
 import PublicEvents from "./routes/publicEvents.js";
 import FeedbackForm from "./routes/feedbackForm.js";

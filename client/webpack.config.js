@@ -1,7 +1,7 @@
 /*
  * Environment and Imports
 */
-var env = process.env.NODE_ENV.trim();
+var env = process.env.NODE_ENV ? process.env.NODE_ENV.trim() : "development";
 var devMode = env != "production";
 
 const webpack = require("webpack");
