@@ -65,11 +65,11 @@ export default function AdminPanel() {
         <div>
             <div className="space-y-4 md:space-y-6">
                 <div>
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label className="block mb-2 text-sm font-medium text-gray-900">
                         Event ID
                     </label>
                     <input
-                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                         value={eventID}
                         onChange={(e) => {
                             setError("");
@@ -78,11 +78,11 @@ export default function AdminPanel() {
                     />
                 </div>
                 <div>
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label className="block mb-2 text-sm font-medium text-gray-900">
                         Event Code
                     </label>
                     <input
-                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                         placeholder=""
                         value={eventCode}
                         onChange={(e) => {
@@ -100,14 +100,14 @@ export default function AdminPanel() {
                 </button>
                 <p className="text-red-500">{error.capitalize()}</p>
                 <div>
-                    <label className="block mb-2 font-medium text-gray-900 dark:text-white">
+                    <label className="block mb-2 font-medium text-gray-900">
                         All Event Codes:
                     </label>
                     {Object.keys(allCodes).length > 0 ? Object.keys(allCodes).map((key) => {
                         return (
                             <div key={key} className="flex space-x-4">
-                                <p className="text-gray-900 dark:text-white">{key}</p>
-                                <p className="text-gray-900 dark:text-white">{allCodes[key]}</p>
+                                <p className="text-gray-900">{key}</p>
+                                <p className="text-gray-900">{allCodes[key]}</p>
                             </div>
                         );
                     }) : <p className="text-sm">No Event Codes Set</p>}

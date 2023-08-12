@@ -53,14 +53,14 @@ export default function SignUpForm() {
   return (
     <div className="space-y-4 md:space-y-6">
       <div>
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        <label className="block mb-2 text-sm font-medium text-gray-900">
           First Name
         </label>
         <input
           type="firstname"
           name="firstname"
           id="firstname"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
           placeholder=""
           required=""
           value={firstname}
@@ -71,14 +71,14 @@ export default function SignUpForm() {
         />
       </div>
       <div>
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        <label className="block mb-2 text-sm font-medium text-gray-900">
           Last Name
         </label>
         <input
           type="lastname"
           name="lastname"
           id="lastname"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
           placeholder=""
           required=""
           onChange={(e) => {
@@ -88,14 +88,14 @@ export default function SignUpForm() {
         />
       </div>
       <div>
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        <label className="block mb-2 text-sm font-medium text-gray-900">
           Your email
         </label>
         <input
           type="email"
           name="email"
           id="email"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
           placeholder="kerb@mit.edu"
           required=""
           onChange={(e) => {
@@ -105,7 +105,7 @@ export default function SignUpForm() {
         />
       </div>
       <div>
-        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        <label className="block mb-2 text-sm font-medium text-gray-900">
           Password
         </label>
         <input
@@ -113,7 +113,7 @@ export default function SignUpForm() {
           name="password"
           id="password"
           placeholder="••••••••"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
           required=""
           onChange={(e) => {
             setError("");
@@ -133,11 +133,11 @@ export default function SignUpForm() {
         Sign Up
       </button>
       <p className="text-red-500">{error.capitalize()}</p>
-      <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+      <p className="text-sm font-light text-gray-500">
         Already have an account?{" "}
         <a
           href="/login"
-          className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+          className="font-medium text-primary-600 hover:underline"
         >
           Login
         </a>

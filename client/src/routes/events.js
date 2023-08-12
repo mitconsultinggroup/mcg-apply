@@ -33,7 +33,7 @@ export default function Events() {
                     <Header firstname={userData.firstname} />
                 </div>
 
-                <div className="bg-gray-50 dark:bg-gray-900 pb-6">
+                <div className="bg-gray-50 pb-6">
                     <h1 className="text-3xl font-medium text-center py-10">
                         Welcome to MCG's Fall 2023 Recruitment Cycle Events
                     </h1>

@@ -41,12 +41,12 @@ export default function LoginForm() {
     };
 
     return (
-        <div className="bg-gray-50 dark:bg-gray-900">
+        <div className="bg-gray-50">
             <div>
                 <PublicHeader />
             </div>
             <div className="flex flex-col items-center justify-center px-6 mx-auto md:h-screen lg:py-0">
-                <div className="mb-4 w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 ">
+                <div className="mb-4 w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 ">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl font-bold text-center leading-tight tracking-tight text-gray-900">
                             Login
@@ -87,7 +87,7 @@ export default function LoginForm() {
                                     name="password"
                                     id="password"
                                     placeholder="••••••••"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     required=""
                                 />
                             </div>
@@ -98,11 +98,11 @@ export default function LoginForm() {
                                 Login
                             </button>
                             <p className="text-red-500">{error.capitalize()}</p>
-                            <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                            <p className="text-sm font-light text-gray-500 ">
                                 Don't have an account yet?{" "}
                                 <a
                                     href="/signup"
-                                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                                    className="font-medium text-primary-600 hover:underline"
                                 >
                                     Sign up
                                 </a>

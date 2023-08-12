@@ -29,14 +29,14 @@ export default function Application() {
 
     return (
         isLoading ? <div></div> :
-            <div className="bg-gray-50 dark:bg-gray-900">
+            <div className="bg-gray-50">
                 <div>
                     <Header firstname={userData.firstname} />
                 </div>
                 <div className="flex flex-col items-center justify-center py-8 ">
-                    <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-2xl lg:max-w-4xl xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                    <div className="w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-2xl lg:max-w-4xl xl:p-0 ">
                         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                            <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                            <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                                 MCG Fall 2023 Application
                             </h1>
                             <ApplicationForm />

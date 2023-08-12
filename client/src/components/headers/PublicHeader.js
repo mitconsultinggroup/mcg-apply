@@ -6,7 +6,7 @@ import { useState } from 'react';
 export default function PublicHeader() {
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (
-    <nav className="text-xl bg-white border-gray-200 dark:bg-gray-900 relative flex flex-wrap items-center justify-between px-2 py-3 mb-3">
+    <nav className="text-xl bg-white border-gray-200 relative flex flex-wrap items-center justify-between px-2 py-3 mb-3">
       <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
           <a href="https://mitconsulting.group/" className="flex items-center">

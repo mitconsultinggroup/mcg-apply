@@ -142,7 +142,7 @@ export default function ApplicationForm() {
             </div>
             <div>
                 <label
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-medium text-gray-900"
                 >
                     Your email
                 </label>
@@ -175,7 +175,7 @@ export default function ApplicationForm() {
             </div>
             <div>
                 <label
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-2 text-sm font-medium text-gray-900"
                 >
                     Profile Image
                 </label>
