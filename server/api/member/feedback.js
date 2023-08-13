@@ -66,7 +66,7 @@ router.post("/submit-feedback", async (req, res) => {
             } else {
                 let feedback = {
                     member:
-                        req.user.userData.firstname + " " + req.user.userData.lastname,
+                        req.user.firstname + " " + req.user.lastname,
                     feedback: req.body.feedback,
                 };
                 if (!candidate.userData) {
