@@ -32,7 +32,7 @@ router.get("/all-candidates", async (req, res) => {
                 candidates = candidates.map((candidate) => {
                     return {
                         name:
-                            candidate.userData.firstname + " " + candidate.userData.lastname,
+                            candidate.firstname + " " + candidate.lastname,
                         email: candidate.email,
                     };
                 });
