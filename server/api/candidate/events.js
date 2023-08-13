@@ -1,7 +1,7 @@
 import express from "express";
 
 import { Config } from "../../db/database.js";
-import verifyToken from "../utils/token.js"
+import verifyToken from "../utils/token.js";
 
 const router = express.Router();
 
@@ -14,12 +14,12 @@ router.post("/event-signin", verifyToken, async (req, res) => {
     }
     let config = await Config.findOne({
         configType: "eventCodes",
-    })
+    });
     if (!config) {
         res.status(500).json({
             message: "error finding event codes in database",
         });
-        return
+        return;
     }
     if (config.configData[req.body.eventName] === req.body.eventCode) {
         if (!req.user.userdata) {
@@ -30,16 +30,23 @@ router.post("/event-signin", verifyToken, async (req, res) => {
         }
         req.user.userData.events[req.body.eventName] = true;
         req.user.markModified("userData");
-        await req.user.save()
-        res.status(200).json({
-            message: "event code saved to database",
-        });
+        req.user
+            .save()
+            .then(() => {
+                res.status(200).json({
+                    message: "event code saved to database",
+                });
+            })
+            .catch((err) => {
+                res.status(500).json({
+                    message: "error saving event code to database",
+                });
+            });
     } else {
         res.status(400).json({
             message: "invalid event code",
         });
     }
 });
-
 
 export default router;

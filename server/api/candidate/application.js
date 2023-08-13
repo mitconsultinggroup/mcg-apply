@@ -26,8 +26,7 @@ router.get("/get-application", async (req, res) => {
         res.status(200).json({
             application: user.userData.application,
         });
-    }
-    else {
+    } else {
         res.status(200).json({
             application: {},
         });
@@ -39,8 +38,7 @@ router.post("/submit-application", hasRequiredFields, async (req, res) => {
 
     if (user.userData && user.userData.application) {
         var application = user.userData.application;
-    }
-    else {
+    } else {
         var application = {};
     }
 
@@ -64,12 +62,18 @@ router.post("/submit-application", hasRequiredFields, async (req, res) => {
     }
     user.userData.application = application;
     user.markModified("userData");
-    await user.save()
-
-    return res.status(200).json({
-        message: "application submitted"
-    });
-
+    user
+        .save()
+        .then(() => {
+            res.status(200).json({
+                message: "application submitted",
+            });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                message: "error submitting application",
+            });
+        });
 });
 
 export default router;

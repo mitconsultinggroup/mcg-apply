@@ -27,7 +27,7 @@ router.post("/set-event-code", async (req, res) => {
     }
     let config = await Config.findOne({
         configType: "eventCodes",
-    })
+    });
     if (!config) {
         const newConfig = new Config({
             configType: "eventCodes",
@@ -35,16 +35,33 @@ router.post("/set-event-code", async (req, res) => {
         newConfig.configData = {};
         newConfig.configData[req.body.eventName] = req.body.eventCode;
         newConfig.markModified("configData");
-        await newConfig.save()
-        res.status(200).json({
-            message: "event code saved to database",
-        });
-
-    }
-    else {
+        newConfig
+            .save()
+            .then(() => {
+                res.status(200).json({
+                    message: "event code saved to database",
+                });
+            })
+            .catch((err) => {
+                res.status(500).json({
+                    message: "error saving event code to database",
+                });
+            });
+    } else {
         config.configData[req.body.eventName] = req.body.eventCode;
         config.markModified("configData");
-        await config.save()
+        config
+            .save()
+            .then(() => {
+                res.status(200).json({
+                    message: "event code saved to database",
+                });
+            })
+            .catch((err) => {
+                res.status(500).json({
+                    message: "error saving event code to database",
+                });
+            });
         res.status(200).json({
             message: "event code saved to database",
         });
@@ -54,29 +71,25 @@ router.post("/set-event-code", async (req, res) => {
 router.get("/get-event-codes", async (req, res) => {
     Config.findOne({
         configType: "eventCodes",
-    }).then(config => {
-        if (!config) {
-            res.status(200).json({
-                message: "no event codes in database",
-                eventCodes: {},
-            });
-        }
-        else {
-            res.status(200).json({
-                message: "event codes found in database",
-                eventCodes: config.configData,
-            });
-        }
-
-    }).catch(
-        err => {
+    })
+        .then((config) => {
+            if (!config) {
+                res.status(200).json({
+                    message: "no event codes in database",
+                    eventCodes: {},
+                });
+            } else {
+                res.status(200).json({
+                    message: "event codes found in database",
+                    eventCodes: config.configData,
+                });
+            }
+        })
+        .catch((err) => {
             res.status(500).json({
                 message: "error finding event codes in database",
             });
-        }
-    );
+        });
 });
-
-
 
 export default router;
