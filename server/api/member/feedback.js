@@ -7,8 +7,8 @@ const router = express.Router();
 
 const checkAdminOrMember = (req, res, next) => {
     if (
-        req.user.userData.usertype == "admin" ||
-        req.user.userData.usertype == "member"
+        req.user.usertype == "admin" ||
+        req.user.usertype == "member"
     ) {
         next();
     } else {
