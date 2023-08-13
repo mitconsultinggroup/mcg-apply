@@ -6,7 +6,7 @@ import SignUp from "./routes/signup.js";
 import Application from "./routes/application.js";
 import Events from "./routes/events.js";
 import PublicEvents from "./routes/publicEvents.js";
-import FeedbackForm from "./routes/feedbackForm.js";
+import Feedback from "./routes/feedback.js";
 import Logout from "./routes/logout.js";
 import Admin from "./routes/admin.js";
 
@@ -14,22 +14,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Styles
 import "./stylesheets/output.css";
-import Applicants from "./components/applicants.js";
 
 const router = createBrowserRouter([
   {
     path: "/events",
     element: <Events />,
   },
-
-  {
-    path: "/applicants",
-    element: <Applicants />,
-  },
-
+  
   {
     path: "/feedback",
-    element: <FeedbackForm />,
+    element: <Feedback/>,
   },
 
   {
