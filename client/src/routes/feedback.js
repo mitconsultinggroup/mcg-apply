@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 
 import Header from '../components/headers/Header';
-import FeedbackForm from '../components/forms/feedbackForm';
+import FeedbackForm from '../components/forms/FeedbackForm';
 
 export default function Events() {
     const [isLoading, setIsLoading] = useState(true);
