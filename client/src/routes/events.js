@@ -34,7 +34,7 @@ export default function Events() {
                 </div>
 
                 <div className="bg-gray-50 pb-6">
-                    <h1 className="text-3xl font-medium text-center py-10">
+                    <h1 className="pt-8 mb-8 text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                         Welcome to MCG's Fall 2023 Recruitment Cycle Events
                     </h1>
                     <EventsForm />

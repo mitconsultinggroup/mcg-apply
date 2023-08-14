@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router';
 
 import Header from '../components/headers/Header';
 import FeedbackForm from '../components/forms/feedbackForm';
-import MemberHeader from '../components/headers/MemberHeader';
 
 export default function Events() {
     const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +17,6 @@ export default function Events() {
                 if (response.ok) {
                     response.json().then(data => {
                         setUserData(data.data);
-                        console.log(userData)
                         setIsLoading(false);
                     })
                 }
@@ -31,11 +29,11 @@ export default function Events() {
 
     return (
         isLoading ? <div></div> :
-        <div>
             <div>
-                <MemberHeader firstname={userData.firstname} />
+                <div>
+                    <Header firstname={userData.firstname} />
+                </div>
+                <FeedbackForm />
             </div>
-            <FeedbackForm/>
-        </div>
     )
 }

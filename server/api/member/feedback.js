@@ -13,7 +13,7 @@ const checkAdminOrMember = (req, res, next) => {
         next();
     } else {
         res.status(403).json({
-            message: "forbidden",
+            message: "forbidden, if you're a member please login",
         });
     }
 };
@@ -50,25 +50,38 @@ router.get("/all-candidates", async (req, res) => {
 });
 
 router.post("/submit-feedback", async (req, res) => {
-    if (!req.body.candidateName) {
+    if (!req.body.candidate) {
         res.status(400).json({
-            message: "candidate name required",
+            message: "candidate email required",
         });
         return;
     }
 
-    if (req.body.candidateEmail) {
-        User.findOne({ email: req.body.candidateEmail }).then(async (candidate) => {
+    if (req.body.candidate) {
+        User.findOne({ email: req.body.candidate }).then(async (candidate) => {
             if (!candidate) {
                 res.status(500).json({
                     message: "error finding candidate in database",
                 });
             } else {
                 let feedback = {
-                    member:
+                    submittedBy:
                         req.user.firstname + " " + req.user.lastname,
-                    feedback: req.body.feedback,
+                    event: req.body.event,
+                    comments: req.body.comments
                 };
+                if (req.body.scores.commitment) {
+                    feedback.commitment = req.body.scores.commitment
+                }
+                if (req.body.scores.socialfit) {
+                    feedback.socialfit = req.body.scores.socialfit
+                }
+                if (req.body.scores.challenge) {
+                    feedback.challenge = req.body.scores.challenge
+                }
+                if (req.body.scores.tact) {
+                    feedback.tact = req.body.scores.tact
+                }
                 if (!candidate.userData) {
                     candidate.userData = {};
                 }

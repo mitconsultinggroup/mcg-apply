@@ -5,11 +5,18 @@ import verifyToken from "./utils/token.js";
 const router = express.Router();
 
 router.get("/", verifyToken, async (req, res) => {
+    let userData = {}
+    if (req.user.userData.events) {
+        userData.events = req.user.userData.events
+    }
+    if (req.user.userData.application) {
+        userData.application = req.user.userData.application
+    }
     let data = {
         firstname: req.user.firstname,
         lastname: req.user.lastname,
         email: req.user.email,
-        userData: req.user.userData ? req.user.userData : {},
+        userData: userData,
         usertype: req.user.usertype,
     };
     res.status(200).json({
