@@ -3,7 +3,7 @@ import Logo from "../../assets/logos/mcg-long-logo-noback.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-export default function Header({ firstname }) {
+export default function Header({ firstname , usertype}) {
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (
     <nav className="text-xl bg-white border-gray-200 relative flex flex-wrap items-center justify-between px-2 py-3 mb-3">
@@ -47,7 +47,17 @@ export default function Header({ firstname }) {
                 </span>
               </Link>
             </li>
+            {usertype !== "candidate" ?             
             <li className="nav-item">
+              <Link
+                to="/feedback"
+                className="px-3 py-1 flex items-center leading-snug text-white hover:opacity-75"
+              >
+                <span className="block pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0">
+                  Feedback
+                </span>
+              </Link>
+            </li> :             <li className="nav-item">
               <Link
                 to="/application"
                 className="px-3 py-1 flex items-center leading-snug text-white hover:opacity-75"
@@ -56,7 +66,7 @@ export default function Header({ firstname }) {
                   Apply
                 </span>
               </Link>
-            </li>
+            </li>}
             <li className="nav-item">
               <Link
                 to="/logout"

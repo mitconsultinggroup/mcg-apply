@@ -31,7 +31,7 @@ export default function Application() {
         isLoading ? <div></div> :
             <div className="bg-gray-50">
                 <div>
-                    <Header firstname={userData.firstname} />
+                    <Header firstname={userData.firstname} usertype={userData.usertype} />
                 </div>
                 <div className="flex flex-col items-center justify-center py-8 ">
                     <div className="w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-2xl lg:max-w-4xl xl:p-0 ">

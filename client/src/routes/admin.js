@@ -35,7 +35,7 @@ export default function Admin() {
         isLoading ? <div></div> :
             <div>
                 <div>
-                    <Header firstname={userData.firstname} />
+                    <Header firstname={userData.firstname} usertype={userData.usertype} />
                 </div>
 
                 <div className="flex flex-col items-center justify-center px-6 mx-auto md:h-screen lg:py-0">

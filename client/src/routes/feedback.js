@@ -31,7 +31,7 @@ export default function Events() {
         isLoading ? <div></div> :
             <div>
                 <div>
-                    <Header firstname={userData.firstname} />
+                    <Header firstname={userData.firstname} usertype={userData.usertype} />
                 </div>
                 <FeedbackForm />
             </div>
