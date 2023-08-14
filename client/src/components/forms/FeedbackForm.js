@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 
 export default function FeedbackForm() {
+    const [isLoading, setIsLoading] = useState(true);
     const [comment, setComment] = useState("");
     const [submitted, setSubmitted] = useState(false);
     const [event, setEvent] = useState("");
@@ -25,10 +26,19 @@ export default function FeedbackForm() {
 
     useEffect(() => {
         fetch("/api/feedback/all-candidates")
-            .then((res) => res.json())
-            .then((result) => {
-                if (result.candidates) {
-                    setApplicants(result.candidates)
+            .then((res) => {
+                if (res.ok) {
+                    res.json().then((result) => {
+                        if (result.candidates) {
+                            setApplicants(result.candidates)
+                            setIsLoading(false);
+                        }
+                    }).catch((err) => {
+                        navigate("/login");
+                    });
+                }
+                else {
+                    navigate("/login")
                 }
             })
             .catch((err) => {
@@ -133,7 +143,7 @@ export default function FeedbackForm() {
     }
 
     return (
-        <div className="bg-gray-50">
+        isLoading ? <div></div> : <div className="bg-gray-50">
             <div className="flex flex-col items-center justify-center py-8 ">
                 <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 ">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
