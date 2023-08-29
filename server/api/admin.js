@@ -62,9 +62,6 @@ router.post("/set-event-code", async (req, res) => {
                     message: "error saving event code to database",
                 });
             });
-        res.status(200).json({
-            message: "event code saved to database",
-        });
     }
 });
 
