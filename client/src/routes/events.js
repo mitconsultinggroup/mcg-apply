@@ -26,6 +26,7 @@ export default function Events() {
             }
         )
     }, [navigate]);
+
     return (
         isLoading ? <div></div> :
             <div>
@@ -37,7 +38,7 @@ export default function Events() {
                     <h1 className="pt-8 mb-8 text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                         Welcome to MCG's Fall 2023 Recruitment Cycle Events
                     </h1>
-                    <EventsForm />
+                    <EventsForm usertype={userData.usertype} />
 
                 </div>
             </div>
