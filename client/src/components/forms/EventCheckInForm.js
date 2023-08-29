@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import validator from "validator";
 
 export default function EventCheckInForm({ event }) {
     const { id, name, timelocation, description } = event;
@@ -12,6 +13,10 @@ export default function EventCheckInForm({ event }) {
 
     const sendCheckInCode = () => {
         if (checkInCode.length < 1) {
+            return;
+        }
+        if (!validator.isAlphanumeric(checkInCode)) {
+            setWrongCode(true);
             return;
         }
         let data = {

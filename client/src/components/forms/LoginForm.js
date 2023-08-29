@@ -2,6 +2,7 @@ import React from "react";
 import PublicHeader from "../headers/PublicHeader";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import validator from "validator";
 
 Object.defineProperty(String.prototype, "capitalize", {
     value: function () {
@@ -18,6 +19,12 @@ export default function LoginForm() {
     const navigate = useNavigate();
 
     const submitLogin = () => {
+
+        if (!validator.isEmail(email)) {
+            setError("please enter a valid email");
+            return;
+        }
+
         const url = "/api/auth/login";
         const data = { email, password };
         const options = {

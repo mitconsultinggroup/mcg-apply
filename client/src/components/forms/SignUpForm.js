@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import validator from "validator";
 
 export default function SignUpForm() {
   const [firstname, setFirstName] = useState("");
@@ -20,8 +21,28 @@ export default function SignUpForm() {
   };
 
   const submitSignup = () => {
-    if (!validateEmail(email)) {
-      setError("Please enter a valid email address");
+    if (!validateEmail(email) || !validator.isEmail(email)) {
+      setError("Please enter a valid MIT email address");
+      return;
+    }
+
+    if (!email.endsWith("@mit.edu")) {
+      setError("Please enter a valid MIT email address");
+      return;
+    }
+
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters long");
+      return;
+    }
+
+    if (firstname.length < 1 || lastname.length < 1) {
+      setError("First and last name must be at least 1 character long");
+      return;
+    }
+
+    if (!validator.isAlpha(firstname) || !validator.isAlpha(lastname)) {
+      setError("First and last name must only contain letters");
       return;
     }
 
