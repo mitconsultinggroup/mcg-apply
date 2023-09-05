@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import validator from "validator";
 
 export default function ApplicationForm() {
     const [firstname, setFirstname] = useState("");
@@ -37,9 +38,28 @@ export default function ApplicationForm() {
             firstname === "" ||
             lastname === "" ||
             classYear === "" ||
-            resume === ""
+            resume === "" ||
+            email == ""
         ) {
             setError("Please fill out all required fields");
+            return;
+        }
+        if (!validator.isEmail(email)) {
+            setError("Please enter a valid email address");
+            return;
+        }
+        if (!email.endsWith("@mit.edu")) {
+            setError("Please enter a valid MIT email address");
+            return;
+        }
+        // check that first and last name is letters
+        if (!validator.isAlpha(firstname) || !validator.isAlpha(lastname)) {
+            setError("Please only enter letters for first and last name");
+            return;
+        }
+        // check that class year is a number
+        if (!validator.isNumeric(classYear)) {
+            setError("Please enter a valid class year, such as 2027");
             return;
         }
         fetch("/api/application/submit-application", {
@@ -182,6 +202,7 @@ export default function ApplicationForm() {
                 <input
                     className="block w-full text-sm font-medium text-gray-900 border border-gray-300 rounded-lg p-1.5 cursor-pointer bg-gray-50 focus:outline-none"
                     type="file"
+                    accept="image/*"
                     onChange={(e) => {
                         setError("");
                         handleProfileUpload(e.target.files[0]);
@@ -196,6 +217,7 @@ export default function ApplicationForm() {
                 <input
                     className="block w-full text-sm font-medium text-gray-900 border border-gray-300 rounded-lg p-1.5 cursor-pointer bg-gray-50 focus:outline-none"
                     type="file"
+                    accept=".pdf,.doc,.docx"
                     onChange={(e) => {
                         setError("");
                         handleResumeUpload(e.target.files[0]);

@@ -20,9 +20,19 @@ app.use(
 // Body Parser
 app.use(bodyParser.json(
     {
-        limit: "50mb",
+        limit: "3mb",
     }
 ));
+
+app.use((err, req, res, next) => {
+    if (err) {
+        return res.status(413).json({
+            message: "file too large, please upload a smaller profile picture/resume",
+        })
+    } else {
+        next()
+    }
+})
 
 // Cookie Parser
 app.use(cookieParser());

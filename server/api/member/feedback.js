@@ -52,7 +52,7 @@ router.get("/all-candidates", async (req, res) => {
 router.post("/submit-feedback", async (req, res) => {
     if (!req.body.candidate) {
         res.status(400).json({
-            message: "candidate email required",
+            message: "candidate selection required",
         });
         return;
     }
@@ -106,7 +106,7 @@ router.post("/submit-feedback", async (req, res) => {
         });
     } else {
         return res.status(400).json({
-            message: "candidate email required",
+            message: "candidate selection required",
         });
     }
 });

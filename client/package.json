@@ -14,7 +14,8 @@
     "react-dom": "^18.2.0",
     "react-router": "^6.12.1",
     "react-router-dom": "^6.12.1",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "validator": "^13.11.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.5",
