@@ -6,7 +6,7 @@ export default function PublicEvents() {
     const events = [{
         id: "meettheteam",
         name: "Meet the Team",
-        timelocation: "7 - 8:30pm | September 11th | Room 2-190",
+        timelocation: "8 - 9:30pm | September 11th | Room 2-190",
         description: "Meet current members of MCG and learn more about MCG's recruitment process during our first recruitment event of the semester."
     },
     {
