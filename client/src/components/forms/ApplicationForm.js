@@ -229,7 +229,7 @@ export default function ApplicationForm() {
                 <label
                     className="block mb-2 text-sm font-medium text-gray-900"
                 >
-                    Optional: Why did the chicken cross the road?
+                    Optional: What do you hope to gain from MCG?
                 </label>
                 <textarea
                     className="p-2 resize-none bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full h-48"
@@ -245,7 +245,7 @@ export default function ApplicationForm() {
                 <label
                     className="p-2 block mb-2 text-sm font-medium text-gray-900"
                 >
-                    Optional: Why do you want to join MCG?
+                    Optional: Share a past experience (100 word limit)
                 </label>
                 <textarea
                     className="resize-none bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full h-48"
