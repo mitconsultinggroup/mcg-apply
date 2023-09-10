@@ -22,7 +22,7 @@ router.post("/event-signin", verifyToken, async (req, res) => {
         return;
     }
     if (config.configData[req.body.eventName] === req.body.eventCode) {
-        if (!req.user.userdata) {
+        if (!req.user.userData) {
             req.user.userData = {};
         }
         if (!req.user.userData.events) {
