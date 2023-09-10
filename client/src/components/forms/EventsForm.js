@@ -37,15 +37,6 @@ export default function EventsForm(usertype) {
         description: "Learn more about consulting and prepare for MCG interviews by working through a mock case with MCG consultants."
     }]
     
-    const signUp = () => {
-        if (usertype === "candidate")
-            navigate("/coffeechat")
-        else {
-            navigate("/coffeechat/internal")
-        }
-
-    }
-    console.log(usertype)
     return (
         <div className="flex flex-wrap gap-8 px-10 justify-center">
             {events.map((event) => (
