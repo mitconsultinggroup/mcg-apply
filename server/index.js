@@ -20,7 +20,7 @@ app.use(
 // Body Parser
 app.use(bodyParser.json(
     {
-        limit: "3mb",
+        limit: "5mb",
     }
 ));
 

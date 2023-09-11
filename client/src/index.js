@@ -9,6 +9,7 @@ import PublicEvents from "./routes/publicEvents.js";
 import Feedback from "./routes/feedback.js";
 import Logout from "./routes/logout.js";
 import Admin from "./routes/admin.js";
+import Deliberations from "./routes/deliberations.js";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -20,10 +21,10 @@ const router = createBrowserRouter([
     path: "/events",
     element: <Events />,
   },
-  
+
   {
     path: "/feedback",
-    element: <Feedback/>,
+    element: <Feedback />,
   },
 
   {
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Admin />,
+  },
+
+  {
+    path: "/deliberations",
+    element: <Deliberations />,
   },
 
   {
