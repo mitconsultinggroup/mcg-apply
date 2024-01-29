@@ -10,11 +10,13 @@ import Feedback from "./routes/feedback.js";
 import Logout from "./routes/logout.js";
 import Admin from "./routes/admin.js";
 import Deliberations from "./routes/deliberations.js";
-
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Profile from "./routes/profile.js";
+import Decisions from "./routes/decisions.js";
+import { createBrowserRouter, RouterProvider, useParams} from "react-router-dom";
 
 // Styles
 import "./stylesheets/output.css";
+
 
 const router = createBrowserRouter([
   {
@@ -60,6 +62,17 @@ const router = createBrowserRouter([
   {
     path: "/deliberations",
     element: <Deliberations />,
+  },
+
+  {
+    path: "/decisions",
+    element: <Decisions />,
+  },
+
+  {
+    path: "/:userid",
+    loader:({ params }) => {return params.userid},
+    element: <Profile />,
   },
 
   {

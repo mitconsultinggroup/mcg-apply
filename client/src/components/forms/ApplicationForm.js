@@ -124,8 +124,8 @@ export default function ApplicationForm() {
                     <br></br>
                     <br></br>
                     If you have any technical difficulties,
-                    please reach out to Connie Cao (
-                    <a className="hover:text-blue-600" href="mailto:ccao25@mit.edu">ccao25@mit.edu</a>).
+                    please reach out to Emma Chen (
+                    <a className="hover:text-blue-600" href="mailto:emmachen@mit.edu">emmachen@mit.edu</a>).
                 </h3>
             </div>
             <div>

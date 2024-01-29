@@ -28,7 +28,16 @@ const DataSchema = new mongoose.Schema({
     userData: {
         type: Object,
         required: false,
-    }
+    },
+    applied: {
+        type: Boolean,
+        required: true,
+    },
+    decisions: {
+        type: String,
+        required: true,
+    },
+
 });
 
 const DataModel = mongoose.model("user", DataSchema);

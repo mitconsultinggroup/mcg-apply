@@ -64,6 +64,7 @@ router.post("/signup", async (req, res) => {
       events: {},
       application: {},
     },
+    applied: false,
   });
 
   newUser

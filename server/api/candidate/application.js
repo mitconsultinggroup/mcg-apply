@@ -57,6 +57,8 @@ router.post("/submit-application", hasRequiredFields, async (req, res) => {
 
     application.submittedAt = Date.now();
 
+    user.applied = true
+
     if (!user.userData) {
         user.userData = {};
     }

@@ -3,9 +3,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 
 import Header from '../components/headers/Header';
-import EventsForm from '../components/forms/EventsForm';
 
-export default function Events() {
+export default function Decisions() {
     const [isLoading, setIsLoading] = useState(true);
     const [userData, setUserData] = useState({ firstname: "" });
 
@@ -16,8 +15,13 @@ export default function Events() {
             (response) => {
                 if (response.ok) {
                     response.json().then(data => {
-                        setUserData(data.data);
-                        setIsLoading(false);
+                        if (data.data.usertype !== "admin") {
+                            navigate("/login")
+                        }
+                        else {
+                            setUserData(data.data);
+                            setIsLoading(false);
+                        }
                     })
                 }
                 else {
@@ -26,24 +30,18 @@ export default function Events() {
             }
         )
     }, [navigate]);
-
     return (
         isLoading ? <div></div> :
             <div>
                 <div>
                     <Header firstname={userData.firstname} usertype={userData.usertype} />
                 </div>
-
-
-
-                <div className="bg-gray-50 pb-6">
-                    <h1 className="pt-8 mb-8 text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                        Welcome to MCG's Fall 2023 Recruitment Cycle Events
+                <div className='mx-8 my-8'>
+                    <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+                        Decisions Control Panel
                     </h1>
-    
-                    <EventsForm usertype={userData.usertype} />
-
                 </div>
+
             </div>
     )
 }
