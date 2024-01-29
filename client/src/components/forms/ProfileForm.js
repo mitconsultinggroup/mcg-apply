@@ -70,11 +70,11 @@ export default function ProfileForm(userid) {
             </div>
             <div className="w-sixty h-svh bg-white border border-gray-200 rounded-lg shadow relative mt-4">
                 <FeedbackCard feedback={feedback}/>
-                <div className="p-4 w-full grid grid-cols-5">
+                {/* <div className="p-4 w-full grid grid-cols-5">
                     <button className="col-start-2">button1</button>
                     <button className="col-start-3">button2</button>
                     <button className="col-start-4">buttons3</button>
-                </div>
+                </div> */}
             </div>
 
         </div>
