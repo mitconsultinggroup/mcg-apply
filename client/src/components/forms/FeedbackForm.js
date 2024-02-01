@@ -1,10 +1,11 @@
+import { set } from 'mongoose';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 
 export default function FeedbackForm() {
     const [isLoading, setIsLoading] = useState(true);
-    const [comment, setComment] = useState("");
+    // const [comment, setComment] = useState("");
     const [submitted, setSubmitted] = useState(false);
     const [event, setEvent] = useState("");
     const [searchedApplicant, setSearchedApplicant] = useState("");
@@ -15,7 +16,21 @@ export default function FeedbackForm() {
         commitment: 0,
         socialfit: 0,
         challenge: 0,
-        tact: 0
+        tact: 0,
+    });
+
+    const [commentState, setCommentState] = useState({
+        commitment: "",
+        socialfit: "",
+        challenge: "",
+        tact: "",
+    });
+
+    const [selectState, setSelectState] = useState({
+        commitment: false,
+        socialfit: false,
+        challenge: false,
+        tact: false,
     });
 
 
@@ -51,7 +66,7 @@ export default function FeedbackForm() {
             candidate: applicantEmail,
             event: event,
             scores: ratingState,
-            comments: comment
+            comments: commentState,
         }
         fetch("/api/feedback/submit-feedback", {
             method: "POST",
@@ -81,24 +96,34 @@ export default function FeedbackForm() {
     const values = [{
         id: "commitment",
         name: "Commitment",
+        group: "1",
     },
     {
         id: "socialfit",
         name: "Social Fit",
+        group: "2",
     },
     {
         id: "challenge",
         name: "Willingness to take on a challenge",
+        group: "3",
     },
     {
         id: "tact",
         name: "Tact/Professionalism",
+        group: "4",
     }];
 
     const setScoreHandler = (score, id) => {
         let currentRatings = { ...ratingState };
         currentRatings[id] = score;
         setRatingState(currentRatings);
+    }
+
+    const setCommentHandler = (comment,id) => {
+        let currentComments = { ...commentState };
+        currentComments[id] = comment;
+        setCommentState(currentComments);
     }
 
     const handleSearch = (e) => {
@@ -131,10 +156,20 @@ export default function FeedbackForm() {
             challenge: 0,
             tact: 0
         })
-        setComment("");
+        setCommentState({
+            commitment: "",
+            socialfit: "",
+            challenge: "",
+            tact: "",
+        });
         setSubmitted(false);
         setError("");
+
+        const radioButtons = document.querySelectorAll(`input[class="btn-check"]`);
+        radioButtons.forEach((radioButton) => {radioButton.checked = false});
     }
+
+    
 
     const checkEnter = key => {
         if (key === 'Enter') {
@@ -148,7 +183,7 @@ export default function FeedbackForm() {
                 <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 ">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                            MCG Fall 2023 Feedback Form
+                            MCG Spring 2024 Feedback Form
                         </h1>
 
                         <div className='flex flex-col space-y-4'>
@@ -180,44 +215,48 @@ export default function FeedbackForm() {
                                 </select>
                             </div>
 
+
                             {values.map((value) => (
                                 <div key={value.name} className="">
                                     <h3 className='mb-0'>{value.name}:</h3>
-                                    <select value={ratingState[value.id]} onChange={(e) => { setScoreHandler(e.target.value, value.id) }} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mt-1 mb-2">
-                                        <option value="0">Select a score</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
+                                    <div className="bg-gray-50 border border-gray-300 rounded-lg block w-full p-2.5 mt-1 mb-2">
+
+                                        <div class="btn-group w-100 border border-gray-300" role="group" style={{height: "30px"}} >
+                                            <input onChange={(e) => setScoreHandler("green", value.id)} type="radio" class="btn-check" name={value.group} id={value.group + "1"}/>
+                                            <label class="btn btn-outline-success" for={value.group + "1"}></label>
+
+                                            <input onChange={(e) => setScoreHandler("yellow", value.id)} type="radio" class="btn-check" name={value.group} id={value.group + "2"}/>
+                                            <label class="btn btn-outline-warning" for={value.group + "2"}></label>
+
+                                            <input onChange={(e) => setScoreHandler("red", value.id)} type="radio" class="btn-check" name={value.group} id={value.group + "3"}/>
+                                            <label class="btn btn-outline-danger" for={value.group + "3"}></label>
+                                            
+                                            <input onChange={(e) => setScoreHandler("white", value.id)} type="radio" class="btn-check" name={value.group} id={value.group + "4"}/>
+                                            <label class="btn btn-outline-secondary" for={value.group + "4"}></label>
+                                        </div> 
+                                    
+                                    <div className="p-1 mt-1"> 
+                                        <textarea value ={commentState[value.id]} onChange={(e) => {
+                                            setCommentHandler(e.target.value, value.id);
+                                        }}
+                                        rows="4" type="comments" name={value.group+"comment"} id={value.group+"comment"} className="p-2.5 resize-y bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Write your comments here" required="" />
+                                    </div> 
+                                    </div>
                                 </div>))}
-
                         </div>
 
-                        <div>
-                            <label className="block mb-2 text-sm font-medium text-gray-900">Comments: </label>
-                            <textarea value={comment} onChange={(e) => {
-                                setComment(e.target.value);
-                            }}
-                                rows="8" type="comments" name="comments" id="comments" className="resize-y bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Write your comments here" required="" />
-                        </div>
                         <div className='grid grid-cols-2 gap-2'>
                             <button onClick={submitFeedback} className="text-sm h-10 px-5 text-white transition-colors duration-150 bg-red-700 rounded-lg focus:shadow-outline hover:bg-red-800">
                                 Submit Feedback
                             </button>
                             <button onClick={resetInputs} className="text-sm h-10 px-5 text-white transition-colors duration-150 bg-gray-400 rounded-lg focus:shadow-outline hover:bg-gray-500">
-                                Reset Inputs
+                                New Feedback Form
                             </button>
                         </div>
 
                         <p className="text-red-500">{error.capitalize()}</p>
                         {submitted ? <p className="text-green-500">Submitted successfully!</p> : ""}
+                    
                     </div>
                 </div>
             </div>
