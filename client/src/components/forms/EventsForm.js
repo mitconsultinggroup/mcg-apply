@@ -15,13 +15,13 @@ export default function EventsForm(usertype) {
     {
         id: "pdpanel",
         name: "Professional Development Panel",
-        timelocation: "7 - 8:30pm | February 13th | Room 2-105",
+        timelocation: "7:30 - 9pm | February 13th | Room 2-105",
         description: "Hear from current members about their experiences in various industries and the role MCG has played in developing their careers."
     },
     {
         id: "deipanel",
         name: "DEI Panel",
-        timelocation: "7 - 8:30pm | February 14th | Room 2-105",
+        timelocation: "7:30 - 9pm | February 14th | Room 2-105",
         description: "Hear from current women and BIPOC within MCG about their professional experiences and MCG's efforts to create a more inclusive environment."
     },
     {
