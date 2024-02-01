@@ -23,7 +23,7 @@ router.get("/", verifyToken, async (req, res) => {
         userData: userData,
         usertype: req.user.usertype,
         applied: applied,
-        decision: decisions
+        decision: decision
     };
     res.status(200).json({
         message: "success",

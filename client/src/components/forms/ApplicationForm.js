@@ -10,7 +10,6 @@ export default function ApplicationForm() {
     const [profileImg, setProfileImg] = useState("");
     const [resume, setResume] = useState("");
     const [opt1, setOpt1] = useState("");
-    const [opt2, setOpt2] = useState("");
     const [error, setError] = useState("");
     const [submitted, setSubmitted] = useState(false);
 
@@ -26,7 +25,6 @@ export default function ApplicationForm() {
                     setProfileImg(result.application.profileImg ? result.application.profileImg : "");
                     setResume(result.application.resume ? result.application.resume : "");
                     setOpt1(result.application.opt1 ? result.application.opt1 : "");
-                    setOpt2(result.application.opt2 ? result.application.opt2 : "");
                 }
             })
             .catch((err) => {
@@ -75,7 +73,6 @@ export default function ApplicationForm() {
                 profileImg: profileImg,
                 resume: resume,
                 opt1: opt1,
-                opt2: opt2,
             }),
         })
             .then((res) => {
@@ -237,22 +234,6 @@ export default function ApplicationForm() {
                     onChange={(e) => {
                         setError("");
                         setOpt1(e.target.value);
-                    }}
-                />
-            </div>
-
-            <div>
-                <label
-                    className="p-2 block mb-2 text-sm font-medium text-gray-900"
-                >
-                    Optional: Share a past experience (100 word limit)
-                </label>
-                <textarea
-                    className="resize-none bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full h-48"
-                    value={opt2}
-                    onChange={(e) => {
-                        setError("");
-                        setOpt2(e.target.value);
                     }}
                 />
             </div>

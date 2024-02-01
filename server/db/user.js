@@ -33,10 +33,6 @@ const DataSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
     },
-    decisions: {
-        type: String,
-        required: true,
-    },
 
 });
 

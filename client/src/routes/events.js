@@ -38,7 +38,7 @@ export default function Events() {
 
                 <div className="bg-gray-50 pb-6">
                     <h1 className="pt-8 mb-8 text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                        Welcome to MCG's Fall 2023 Recruitment Cycle Events
+                        Welcome to MCG's Spring 2024 Recruitment Cycle Events
                     </h1>
     
                     <EventsForm usertype={userData.usertype} />
