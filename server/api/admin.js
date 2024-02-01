@@ -110,6 +110,49 @@ router.get("/view-all-candidates", async (req, res) => {
         });
 });
 
+router.get("/view-applied-candidates", async (req, res) => {
+    User.find({ usertype: "candidate", applied: true })
+        .then((candidates) => {
+            if (!candidates) {
+                res.status(500).json({
+                    message: "error finding candidates in database",
+                });
+            } else {
+                res.status(200).json({
+                    message: "candidates found in database",
+                    candidates: candidates,
+                });
+            }
+        })
+        .catch((err) => {
+            res.status(500).json({
+                message: "error finding candidates in database",
+            });
+        });
+});
+
+router.get("/candidate-info/:userid", async (req, res) => {
+    User.findOne({ userid: req.params.userid })
+        .then((candidate) => {
+            if (!candidate) {
+                res.status(500).json({
+                    message: "error finding candidate in database",
+                });
+            } else {
+                if (!candidate.userData || !candidate.userData.application) {
+                    res.status(500).json({
+                        message: "error finding candidate in database",
+                    });
+                }
+                res.status(200).json({
+                    message: "candidate found in database",
+                    candidate: candidate,
+                });
+            }
+        })
+});
+
+
 router.get("/candidate-resume/:email", async (req, res) => {
     User.findOne({ email: req.params.email })
         .then((candidate) => {
@@ -149,6 +192,7 @@ router.get("/candidate-profile-img/:email", async (req, res) => {
         })
 });
 
+
 router.get("/candidate-spreadsheet", async (req, res) => {
     User.find({ usertype: "candidate" })
         .then((candidates) => {
@@ -173,7 +217,7 @@ router.get("/candidate-spreadsheet", async (req, res) => {
                         events = candidate.userData.events;
                     }
                     csv += candidate.firstname + "," + candidate.lastname + "," + candidate.email + "," + classYear + ",";
-                    csv += (events.meettheteam ? "Yes" : "No") + "," + (events.deipanel ? "Yes" : "No") + "," + (events.resumereview ? "Yes" : "No") + "," + (events.cheesecakesocial ? "Yes" : "No") + "," + (events.caseworkshop ? "Yes" : "No") + ",";
+                    csv += (events.meettheteam ? "Yes" : "No") + "," + (events.pdpanel ? "Yes" : "No") + "," + (events.deipanel ? "Yes" : "No") + "," + (events.resumereview ? "Yes" : "No") + "," + (events.cheesecakesocial ? "Yes" : "No") + "," + (events.caseworkshop ? "Yes" : "No") + ",";
                     csv += `https://apply.mitconsulting.group/api/admin/candidate-resume/${candidate.email}` + "," + `https://apply.mitconsulting.group/api/admin/candidate-profile-img/${candidate.email}` + ",";
                     csv += candidate.userData.application.opt1.replaceAll(",", "-").replaceAll("\n", "") + "," + candidate.userData.application.opt2.replaceAll(",", "-").replaceAll("\n", "") + ",";
                     csv += "\n";
