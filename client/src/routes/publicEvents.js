@@ -6,7 +6,7 @@ export default function PublicEvents() {
     const events = [{
         id: "meettheteam",
         name: "Meet the Team",
-        timelocation: "8 - 9:30pm | February 12th | Room 56-154",
+        timelocation: "7:30 - 9pm | February 12th | Room 56-154",
         description: "Meet current members of MCG and learn more about MCG's recruitment process during our first recruitment event of the semester."
     },
     {
@@ -24,7 +24,7 @@ export default function PublicEvents() {
     {
         id: "resumereview",
         name: "Resume Review",
-        timelocation: " 7 - 9pm | February 15th | Room 4-270",
+        timelocation: " 7:30 - 9pm | February 15th | Room 4-270",
         description: "Come work on your resume with the help of current MCG consultants who have landed offers at top consulting, finance, and tech companies."
     },
     {
