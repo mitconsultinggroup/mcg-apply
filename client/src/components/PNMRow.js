@@ -69,6 +69,7 @@ export default function PNMProfile({ pnm, index }) {
             <div className='col-span-1'>{events.resumereview ? "Yes" : "-"}</div>
             <div className='col-span-1'>{events.cheesecakesocial ? "Yes" : "-"}</div>
             <div className='col-span-1'>{events.caseworkshop ? "Yes" : "-"}</div>
+            <div className='col-span-1'>{pnm.userData.feedback.length}</div>
         </div>
     )
 }

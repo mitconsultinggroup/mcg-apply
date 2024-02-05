@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 
 export default function FeedbackForm() {
     const [isLoading, setIsLoading] = useState(true);
-    // const [comment, setComment] = useState("");
+    const [comment, setComment] = useState("");
     const [submitted, setSubmitted] = useState(false);
     const [event, setEvent] = useState("");
     const [searchedApplicant, setSearchedApplicant] = useState("");
@@ -32,7 +32,6 @@ export default function FeedbackForm() {
         challenge: false,
         tact: false,
     });
-
 
     const [applicants, setApplicants] = useState([]);
     const [filteredApp, setFilteredApp] = useState([]);
@@ -67,6 +66,7 @@ export default function FeedbackForm() {
             event: event,
             scores: ratingState,
             comments: commentState,
+            comment: comment,
         }
         fetch("/api/feedback/submit-feedback", {
             method: "POST",
@@ -162,6 +162,7 @@ export default function FeedbackForm() {
             challenge: "",
             tact: "",
         });
+        setComment("");
         setSubmitted(false);
         setError("");
 
@@ -215,7 +216,6 @@ export default function FeedbackForm() {
                                 </select>
                             </div>
 
-
                             {values.map((value) => (
                                 <div key={value.name} className="">
                                     <h3 className='mb-0'>{value.name}:</h3>
@@ -239,10 +239,18 @@ export default function FeedbackForm() {
                                         <textarea value ={commentState[value.id]} onChange={(e) => {
                                             setCommentHandler(e.target.value, value.id);
                                         }}
-                                        rows="4" type="comments" name={value.group+"comment"} id={value.group+"comment"} className="p-2.5 resize-y bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Write your comments here" required="" />
+                                        rows="4" type="comments" name={value.group+"comment"} id={value.group+"comment"} className="p-2.5 resize-y bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder={"Elaborate on your "+value.name.toLowerCase()+" score here"} required="" />
                                     </div> 
                                     </div>
                                 </div>))}
+                        </div>
+
+                        <div>
+                            <label className="block mb-2 text-sm font-medium text-gray-900">General Comments: </label>
+                            <textarea value={comment} onChange={(e) => {
+                                setComment(e.target.value);
+                            }}
+                                rows="8" type="comments" name="comments" id="comments" className="resize-y bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Write your general comments here" required="" />
                         </div>
 
                         <div className='grid grid-cols-2 gap-2'>

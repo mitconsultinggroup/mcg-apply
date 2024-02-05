@@ -139,7 +139,7 @@ router.get("/candidate-info/:userid", async (req, res) => {
                     message: "error finding candidate in database",
                 });
             } else {
-                if (!candidate.userData || !candidate.userData.application) {
+                if (!candidate.userData) {
                     res.status(500).json({
                         message: "error finding candidate in database",
                     });

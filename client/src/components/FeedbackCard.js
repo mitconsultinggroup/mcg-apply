@@ -61,7 +61,7 @@ const FeedbackCard = ({ feedback }) => {
         <div className="p-2 w-full">
             {selectedComment && (
                 <div>
-                    <button onClick={() => handleCommentClosed()}> Exit </button>
+                    <button className="p-2 border border-gray-300 text-gray-900 rounded-lg hover:bg-gray-100" onClick={() => handleCommentClosed()}> Exit </button>
                     <div className="p-2 w-full grid grid-cols-2 text-center text-2xl tracking-tight">
                         <h1 className="col-start-1 p-2"> <strong>Event:</strong> {selectedComment.event}</h1>
                         <h1 className="col-end-2 p-2"> <strong>Submitted by:</strong> {selectedComment.submittedBy}</h1>
@@ -77,6 +77,12 @@ const FeedbackCard = ({ feedback }) => {
                             </div>
                         </div>
                     ))}
+                    <div className = "p-2">
+                        <h1 className = "text-l tracking-wide p-2">General Comments:</h1>
+                        <div className="p-2 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600">
+                            <p>{selectedComment.comment}</p>
+                        </div>
+                    </div>
 
 
                 </div>

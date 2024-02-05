@@ -66,6 +66,7 @@ export default function DeliberationsForm() {
                         <div className='col-span-1'>Resume Review</div>
                         <div className='col-span-1'>Cheesecake Social</div>
                         <div className='col-span-1'>Case Workshop</div>
+                        <div className='col-span-1'>Feedback #</div>
                     </div>
                     <div>
                         {pnmData.map((pnm, index) => {
@@ -80,7 +81,7 @@ export default function DeliberationsForm() {
             </div>):
 
             <div className="p-3">
-                <h1 onClick={() => handleProfileClose()}>back</h1>
+                <button className="p-2 border border-gray-300 text-gray-900 rounded-lg hover:bg-gray-100" onClick={() => handleProfileClose()}>Back</button>
                 <ProfileForm userid={selectedProfile.userid}/>
             </div>
     );

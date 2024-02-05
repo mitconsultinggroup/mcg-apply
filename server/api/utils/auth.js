@@ -44,7 +44,7 @@ router.post("/signup", async (req, res) => {
   let existingUser = await User.findOne({ email: req.body.email });
   if (existingUser) {
     res.status(409).json({
-      message: "email already signed up. Please contact lrothman@mit.edu if you think this is a mistake",
+      message: "email already signed up. Please contact emmachen@mit.edu if you think this is a mistake",
     });
     return;
   }

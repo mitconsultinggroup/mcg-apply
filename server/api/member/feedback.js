@@ -68,7 +68,7 @@ router.post("/submit-feedback", async (req, res) => {
                     submittedBy:
                         req.user.firstname + " " + req.user.lastname,
                     event: req.body.event,
-                    comments: req.body.comments
+                    comments: req.body.comments,
                 };
                 if (req.body.scores.commitment) {
                     feedback.commitment = req.body.scores.commitment
@@ -81,6 +81,9 @@ router.post("/submit-feedback", async (req, res) => {
                 }
                 if (req.body.scores.tact) {
                     feedback.tact = req.body.scores.tact
+                }
+                if (req.body.comment) {
+                    feedback.comment = req.body.comment
                 }
                 if (!candidate.userData) {
                     candidate.userData = {};
