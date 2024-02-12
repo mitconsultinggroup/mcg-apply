@@ -213,6 +213,7 @@ export default function FeedbackForm() {
                                     <option value="Cheesecake Social">Cheesecake Social</option>
                                     <option value="Case Workshop">Case Workshop</option>
                                     <option value="Interview">Interview</option>
+                                    <option value="Conflict">Conflict</option>
                                 </select>
                             </div>
 
