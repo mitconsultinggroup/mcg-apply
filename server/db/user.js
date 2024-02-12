@@ -28,6 +28,10 @@ const DataSchema = new mongoose.Schema({
     userData: {
         type: Object,
         required: false,
+    },
+    decision: {
+        type: String,
+        required: true,
     }
 });
 

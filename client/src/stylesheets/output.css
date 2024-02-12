@@ -1319,12 +1319,17 @@ video {
 
 .text-green-500{
   --tw-text-opacity: 1;
-  color: rgb(34 197 94 / var(--tw-text-opacity));
+  color: #28a746cd;
+}
+
+.text-yellow-500{
+  --tw-text-opacity: 1;
+  color: #ffc107d1;
 }
 
 .text-red-500{
   --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
+  color: #dc3546d4;
 }
 
 .text-white{
@@ -1355,6 +1360,18 @@ video {
 
 .duration-150{
   transition-duration: 150ms;
+}
+.hover\:bg-success:hover{
+  --tw-bg-opacity: 1;
+  background-color:#28a74650;
+}
+.hover\:bg-warning:hover{
+  --tw-bg-opacity: 1;
+  background-color:#ffc1074c;
+}
+.hover\:bg-danger:hover{
+  --tw-bg-opacity: 1;
+  background-color:#dc35464d;
 }
 
 .hover\:bg-gray-100:hover{
