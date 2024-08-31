@@ -9,9 +9,8 @@
     "start": "concurrently \"npm run server\" \"cd client && export NODE_ENV=\"production\" && npm run build\"",
     "server": "npm run babel-node",
     "watch": "npx tailwindcss -i ./client/src/stylesheets/input.css -o ./client/src/stylesheets/output.css --watch",
-    "build": "cd client && npm run build",
-    "install": "cd client && npm install",
-    "client": "npm start --prefix client"
+    "build": "concurrently \"npm run server\" \"cd client && npm run build\"",
+    "install": "concurrently \"npm run server\" \"cd client && npm install\""
   },
   "dependencies": {
     "@babel/register": "^7.21.0",
