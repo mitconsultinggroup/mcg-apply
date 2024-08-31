@@ -1,16 +1,16 @@
 import React from "react";
-import Logo from "../../assets/logos/mcg-long-logo-noback.png";
+// import Logo from "../../assets/logos/mcg-long-logo-noback.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-export default function Header({ firstname , usertype}) {
+export default function Header({ firstname, usertype }) {
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (
     <nav className="text-xl bg-white border-gray-200 relative flex flex-wrap items-center justify-between px-2 py-3 mb-3">
       <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
           <a href="https://mitconsulting.group/" className="flex items-center">
-            <img src={Logo} className="h-8 mr-3" alt="MCG Logo" />
+            {/* <img src={Logo} className="h-8 mr-3" alt="MCG Logo" /> */}
           </a>
           <button
             className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
@@ -47,26 +47,26 @@ export default function Header({ firstname , usertype}) {
                 </span>
               </Link>
             </li>
-            {usertype !== "candidate" ?             
-            <li className="nav-item">
-              <Link
-                to="/feedback"
-                className="px-3 py-1 flex items-center leading-snug text-white hover:opacity-75"
-              >
-                <span className="block pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0">
-                  Feedback
-                </span>
-              </Link>
-            </li> :             <li className="nav-item">
-              <Link
-                to="/application"
-                className="px-3 py-1 flex items-center leading-snug text-white hover:opacity-75"
-              >
-                <span className="block pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0">
-                  Apply
-                </span>
-              </Link>
-            </li>}
+            {usertype !== "candidate" ?
+              <li className="nav-item">
+                <Link
+                  to="/feedback"
+                  className="px-3 py-1 flex items-center leading-snug text-white hover:opacity-75"
+                >
+                  <span className="block pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0">
+                    Feedback
+                  </span>
+                </Link>
+              </li> : <li className="nav-item">
+                <Link
+                  to="/application"
+                  className="px-3 py-1 flex items-center leading-snug text-white hover:opacity-75"
+                >
+                  <span className="block pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0">
+                    Apply
+                  </span>
+                </Link>
+              </li>}
             <li className="nav-item">
               <Link
                 to="/logout"
