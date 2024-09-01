@@ -3,15 +3,7 @@
   "version": "1.0.0",
   "description": "Recruitment Platform for the MIT Consulting Group",
   "main": "server/index.js",
-  "scripts": {
-    "babel-node": "babel-node ./server/index.js",
-    "dev": "concurrently \"npm run server\" \"cd client && npm start\"",
-    "start": "concurrently \"npm run server\" \"cd client && export NODE_ENV=\"production\" && npm run build\"",
-    "server": "npm run babel-node",
-    "watch": "npx tailwindcss -i ./client/src/stylesheets/input.css -o ./client/src/stylesheets/output.css --watch",
-    "build": "concurrently \"npm run server\" \"cd client && npm run build\"",
-    "install": "concurrently \"npm run server\" \"cd client && npm install\""
-  },
+  "scripts": {},
   "dependencies": {
     "@babel/register": "^7.21.0",
     "bcrypt": "^5.1.0",
