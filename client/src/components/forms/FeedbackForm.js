@@ -120,7 +120,7 @@ export default function FeedbackForm() {
         setRatingState(currentRatings);
     }
 
-    const setCommentHandler = (comment,id) => {
+    const setCommentHandler = (comment, id) => {
         let currentComments = { ...commentState };
         currentComments[id] = comment;
         setCommentState(currentComments);
@@ -167,10 +167,10 @@ export default function FeedbackForm() {
         setError("");
 
         const radioButtons = document.querySelectorAll(`input[class="btn-check"]`);
-        radioButtons.forEach((radioButton) => {radioButton.checked = false});
+        radioButtons.forEach((radioButton) => { radioButton.checked = false });
     }
 
-    
+
 
     const checkEnter = key => {
         if (key === 'Enter') {
@@ -184,7 +184,7 @@ export default function FeedbackForm() {
                 <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 ">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                            MCG Spring 2024 Feedback Form
+                            MCG Fall 2024 Feedback Form
                         </h1>
 
                         <div className='flex flex-col space-y-4'>
@@ -222,26 +222,26 @@ export default function FeedbackForm() {
                                     <h3 className='mb-0'>{value.name}:</h3>
                                     <div className="bg-gray-50 border border-gray-300 rounded-lg block w-full p-2.5 mt-1 mb-2">
 
-                                        <div class="btn-group w-100 border border-gray-300" role="group" style={{height: "30px"}} >
-                                            <input onChange={(e) => setScoreHandler("green", value.id)} type="radio" class="btn-check" name={value.group} id={value.group + "1"}/>
+                                        <div class="btn-group w-100 border border-gray-300" role="group" style={{ height: "30px" }} >
+                                            <input onChange={(e) => setScoreHandler("green", value.id)} type="radio" class="btn-check" name={value.group} id={value.group + "1"} />
                                             <label class="btn btn-outline-success" for={value.group + "1"}></label>
 
-                                            <input onChange={(e) => setScoreHandler("yellow", value.id)} type="radio" class="btn-check" name={value.group} id={value.group + "2"}/>
+                                            <input onChange={(e) => setScoreHandler("yellow", value.id)} type="radio" class="btn-check" name={value.group} id={value.group + "2"} />
                                             <label class="btn btn-outline-warning" for={value.group + "2"}></label>
 
-                                            <input onChange={(e) => setScoreHandler("red", value.id)} type="radio" class="btn-check" name={value.group} id={value.group + "3"}/>
+                                            <input onChange={(e) => setScoreHandler("red", value.id)} type="radio" class="btn-check" name={value.group} id={value.group + "3"} />
                                             <label class="btn btn-outline-danger" for={value.group + "3"}></label>
-                                            
-                                            <input onChange={(e) => setScoreHandler("white", value.id)} type="radio" class="btn-check" name={value.group} id={value.group + "4"}/>
+
+                                            <input onChange={(e) => setScoreHandler("white", value.id)} type="radio" class="btn-check" name={value.group} id={value.group + "4"} />
                                             <label class="btn btn-outline-secondary" for={value.group + "4"}></label>
-                                        </div> 
-                                    
-                                    <div className="p-1 mt-1"> 
-                                        <textarea value ={commentState[value.id]} onChange={(e) => {
-                                            setCommentHandler(e.target.value, value.id);
-                                        }}
-                                        rows="4" type="comments" name={value.group+"comment"} id={value.group+"comment"} className="p-2.5 resize-y bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder={"Elaborate on your "+value.name.toLowerCase()+" score here"} required="" />
-                                    </div> 
+                                        </div>
+
+                                        <div className="p-1 mt-1">
+                                            <textarea value={commentState[value.id]} onChange={(e) => {
+                                                setCommentHandler(e.target.value, value.id);
+                                            }}
+                                                rows="4" type="comments" name={value.group + "comment"} id={value.group + "comment"} className="p-2.5 resize-y bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder={"Elaborate on your " + value.name.toLowerCase() + " score here"} required="" />
+                                        </div>
                                     </div>
                                 </div>))}
                         </div>
@@ -265,7 +265,7 @@ export default function FeedbackForm() {
 
                         <p className="text-red-500">{error.capitalize()}</p>
                         {submitted ? <p className="text-green-500">Submitted successfully!</p> : ""}
-                    
+
                     </div>
                 </div>
             </div>
