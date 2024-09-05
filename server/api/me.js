@@ -18,6 +18,7 @@ router.get("/", verifyToken, async (req, res) => {
         email: req.user.email,
         userData: userData,
         usertype: req.user.usertype,
+        conflict: req.user.conflict,
     };
     res.status(200).json({
         message: "success",

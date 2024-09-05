@@ -32,6 +32,10 @@ const DataSchema = new mongoose.Schema({
     decision: {
         type: String,
         required: true,
+    },
+    conflict: {
+        type: Array,
+        required: true
     }
 });
 

@@ -7,6 +7,7 @@ import Application from "./routes/application.js";
 import Events from "./routes/events.js";
 import PublicEvents from "./routes/publicEvents.js";
 import Feedback from "./routes/feedback.js";
+import Conflict from "./routes/conflict.js";
 import Logout from "./routes/logout.js";
 import Admin from "./routes/admin.js";
 import Deliberations from "./routes/deliberations.js";
@@ -17,6 +18,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./stylesheets/output.css";
 
 const router = createBrowserRouter([
+  {
+    path: "/conflict",
+    element: <Conflict />,
+  },
   {
     path: "/events",
     element: <Events />,

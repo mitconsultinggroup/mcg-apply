@@ -65,6 +65,7 @@ router.post("/signup", async (req, res) => {
       application: {},
     },
     decision: "pending",
+    conflict: [],
   });
 
   newUser

@@ -10,6 +10,7 @@ export default function FeedbackForm() {
     const [event, setEvent] = useState("");
     const [searchedApplicant, setSearchedApplicant] = useState("");
     const [applicantEmail, setApplicantEmail] = useState("");
+    const [pnmEmail, setPNMEmail] = useState("");
     const [error, setError] = useState("");
 
     const [ratingState, setRatingState] = useState({
@@ -63,6 +64,7 @@ export default function FeedbackForm() {
     const submitFeedback = () => {
         const data = {
             candidate: applicantEmail,
+            email: pnmEmail,
             event: event,
             scores: ratingState,
             comments: commentState,
@@ -148,6 +150,7 @@ export default function FeedbackForm() {
 
     const resetInputs = () => {
         setApplicantEmail("");
+        setPNMEmail("");
         setSearchedApplicant("");
         setEvent("");
         setRatingState({
@@ -200,6 +203,11 @@ export default function FeedbackForm() {
                                         )
                                     })}
                                 </div>
+                            </div>
+
+                            <h3>Or email, if they haven't created an account:</h3>
+                            <div className='border-b border-l border-r border-gray-300 rounded-lg'>
+                                <input value={pnmEmail} onChange={(e) => setPNMEmail(e.target.value)} className="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-500 focus:border-gray-500" placeholder="Applicant email" />
                             </div>
 
                             <div className="">

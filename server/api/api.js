@@ -5,6 +5,7 @@ import application from "./candidate/application.js";
 import me from "./me.js";
 import admin from "./admin.js";
 import feedback from "./member/feedback.js";
+import conflict from "./member/conflict.js";
 
 const router = express.Router();
 
@@ -25,5 +26,8 @@ router.use("/admin", admin);
 
 // Feedback routes (submit feedback)
 router.use("/feedback", feedback);
+
+// Conflict routes (submit conflicts)
+router.use("/conflict", conflict);
 
 export default router;

@@ -66,7 +66,6 @@ router.post("/set-event-code", async (req, res) => {
 });
 
 router.post("/set-decision", async (req, res) => {
-    console.log(req.body.email)
     User.findOne({ email: req.body.email }).then(async (candidate) => {
         if (!candidate) {
             res.status(500).json({
@@ -87,8 +86,9 @@ router.post("/set-decision", async (req, res) => {
                         message: "error saving decision to database",
                     });
                 });
-            }});
-        });
+        }
+    });
+});
 
 router.get("/get-event-codes", async (req, res) => {
     Config.findOne({
@@ -115,7 +115,8 @@ router.get("/get-event-codes", async (req, res) => {
 });
 
 router.get("/view-all-candidates", async (req, res) => {
-    User.find({ usertype: "candidate",decision: "pending"})
+    // gets all users with decision pending
+    User.find({ usertype: "candidate", decision: "pending" })
         .then((candidates) => {
             if (!candidates) {
                 res.status(500).json({

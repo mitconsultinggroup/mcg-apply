@@ -36,18 +36,18 @@ export default function Header({ firstname, usertype }) {
             (navbarOpen ? " flex" : " hidden")
           }
         >
-          <ul className="flex flex-col lg:flex-row list-none lg:ml-auto mt-2 lg:mt-0">
-            <li className="nav-item">
-              <Link
-                to="/events"
-                className="px-3 py-1 flex items-center leading-snug text-white hover:opacity-75"
-              >
-                <span className="block pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0">
-                  Events
-                </span>
-              </Link>
-            </li>
-            {usertype !== "candidate" ?
+          {usertype !== "candidate" ?
+            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto mt-2 lg:mt-0">
+              <li className="nav-item">
+                <Link
+                  to="/events"
+                  className="px-3 py-1 flex items-center leading-snug text-white hover:opacity-75"
+                >
+                  <span className="block pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0">
+                    Events
+                  </span>
+                </Link>
+              </li>
               <li className="nav-item">
                 <Link
                   to="/feedback"
@@ -57,7 +57,47 @@ export default function Header({ firstname, usertype }) {
                     Feedback
                   </span>
                 </Link>
-              </li> : <li className="nav-item">
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/conflict"
+                  className="px-3 py-1 flex items-center leading-snug text-white hover:opacity-75"
+                >
+                  <span className="block pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0">
+                    Conflict
+                  </span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/logout"
+                  className="px-3 py-1 flex items-center leading-snug text-white hover:opacity-75"
+                >
+                  <span className="block pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0">
+                    Logout
+                  </span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="cursor-default px-3 py-1 flex items-center leading-snug text-white">
+                  <span className="block pl-3 pr-4 text-gray-900 rounded  md:border-0 md:p-0">
+                    Hi {firstname}
+                  </span>
+                </Link>
+              </li>
+            </ul> :
+            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto mt-2 lg:mt-0">
+              <li className="nav-item">
+                <Link
+                  to="/events"
+                  className="px-3 py-1 flex items-center leading-snug text-white hover:opacity-75"
+                >
+                  <span className="block pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0">
+                    Events
+                  </span>
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link
                   to="/application"
                   className="px-3 py-1 flex items-center leading-snug text-white hover:opacity-75"
@@ -66,25 +106,25 @@ export default function Header({ firstname, usertype }) {
                     Apply
                   </span>
                 </Link>
-              </li>}
-            <li className="nav-item">
-              <Link
-                to="/logout"
-                className="px-3 py-1 flex items-center leading-snug text-white hover:opacity-75"
-              >
-                <span className="block pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0">
-                  Logout
-                </span>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="cursor-default px-3 py-1 flex items-center leading-snug text-white">
-                <span className="block pl-3 pr-4 text-gray-900 rounded  md:border-0 md:p-0">
-                  Hi {firstname}
-                </span>
-              </Link>
-            </li>
-          </ul>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/logout"
+                  className="px-3 py-1 flex items-center leading-snug text-white hover:opacity-75"
+                >
+                  <span className="block pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0">
+                    Logout
+                  </span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="cursor-default px-3 py-1 flex items-center leading-snug text-white">
+                  <span className="block pl-3 pr-4 text-gray-900 rounded  md:border-0 md:p-0">
+                    Hi {firstname}
+                  </span>
+                </Link>
+              </li>
+            </ul>}
         </div>
       </div>
     </nav>
