@@ -47,7 +47,7 @@ export default function SignUpForm() {
     }
 
     const url = "/api/auth/signup";
-    const data = { firstname, lastname, email, password };
+    const data = { firstname, lastname, email, password, feedback };
     const options = {
       method: "POST",
       headers: {

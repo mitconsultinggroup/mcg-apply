@@ -34,7 +34,7 @@ export default function EventsForm(usertype) {
         id: "cupcakesocial",
         name: "Cupcake Social",
         timelocation: "7:30 - 9pm | September 13th | By Invitation",
-        description: "Join us for a night of cheesecake and games and learn more about the MCG community, social events, and the work our members do in a casual setting."
+        description: "Join us for a night of cupcakes and games and learn more about the MCG community, social events, and the work our members do in a casual setting."
     },
     {
         id: "caseworkshop",

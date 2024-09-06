@@ -39,7 +39,7 @@ router.post("/signup", async (req, res) => {
     return;
   }
 
-  const { firstname, lastname, email, password } = req.body;
+  const { firstname, lastname, email, password, feedback } = req.body;
 
   let existingUser = await User.findOne({ email: req.body.email });
   if (existingUser) {
@@ -179,6 +179,37 @@ router.post("/refresh-token", verifyToken, (req, res) => {
   res.status(200).json({
     message: "token refreshed",
   });
+});
+
+router.get("/unassigned-feedback", async (req, res) => {
+  // all candidates with accounts
+  User.find({ email: "test@mit.edu" })
+    .then((candidates) => {
+      if (!candidates) {
+        res.status(500).json({
+          message: "error finding candidates in database",
+        });
+        console.log("error finding conflicts")
+      } else {
+        candidates = candidates.map((candidate) => {
+          return {
+            name: candidate.firstname + " " + candidate.lastname,
+            email: candidate.email,
+          };
+        });
+        res.status(200).json({
+          message: "candidates found in database",
+          candidates: candidates,
+        });
+        console.log("conflicts found successfully")
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        message: "error finding candidates in database",
+      });
+      console.log("error finding conflicts")
+    });
 });
 
 export default router;
