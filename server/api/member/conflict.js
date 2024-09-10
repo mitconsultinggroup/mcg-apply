@@ -75,6 +75,7 @@ router.post("/submit-conflict", async (req, res) => {
                     }
                 }
                 member.conflict = conflicts;
+                console.log(member.conflict)
                 member.markModified("conflict");
                 member
                     .save()

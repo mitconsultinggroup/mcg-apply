@@ -13,7 +13,6 @@ const Bar = (color) => {
         let currentColors = { ...colors };
         currentColors[id.color] = "1";
         setColor(currentColors);
-        console.log(currentColors)
     };
 
     useEffect(() => {

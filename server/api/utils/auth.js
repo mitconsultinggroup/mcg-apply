@@ -183,13 +183,12 @@ router.post("/refresh-token", verifyToken, (req, res) => {
 
 router.get("/unassigned-feedback", async (req, res) => {
   // all candidates with accounts
-  User.find({ email: "test@mit.edu" })
-    .then((candidates) => {
-      if (!candidates) {
+  User.findOne({ email: "test@mit.edu" })
+    .then((candidate) => {
+      if (!candidate) {
         res.status(500).json({
-          message: "error finding candidates in database",
+          message: "error finding test candidate",
         });
-        console.log("error finding conflicts")
       } else {
         candidates = candidates.map((candidate) => {
           return {
