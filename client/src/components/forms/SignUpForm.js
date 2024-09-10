@@ -45,10 +45,10 @@ export default function SignUpForm() {
       setError("First and last name must only contain letters");
       return;
     }
-    
+
 
     const url = "/api/auth/signup";
-    const data = { firstname, lastname, email, password, feedback };
+    const data = { firstname, lastname, email, password };
     const options = {
       method: "POST",
       headers: {
