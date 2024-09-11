@@ -58,6 +58,13 @@ router.post("/submit-feedback", async (req, res) => {
         return;
     }
 
+    if (!req.body.event) {
+        res.status(400).json({
+            message: "event selection required",
+        });
+        return;
+    }
+
     if (req.body.candidate) {
         User.findOne({ email: req.body.candidate }).then(async (candidate) => {
             if (!candidate) {

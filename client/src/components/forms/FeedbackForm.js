@@ -217,6 +217,7 @@ export default function FeedbackForm() {
                                     <option value="Coffee Chat">Coffee Chat</option>
                                     <option value="Meet the Team">Meet the Team</option>
                                     <option value="DEI Panel">DEI Panel</option>
+                                    <option value="PD Panel">PD Panel</option>
                                     <option value="Resume Review">Resume Review</option>
                                     <option value="Cheesecake Social">Cheesecake Social</option>
                                     <option value="Case Workshop">Case Workshop</option>
