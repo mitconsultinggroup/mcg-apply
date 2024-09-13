@@ -23,33 +23,28 @@ export default function DeliberationsForm() {
                 response.json().then((data) => {
                     setPNMData(data.candidates);
                     const pending = [];
-                    const yes = [];
-                    const maybe = [];
-                    const no = [];
+                    console.log(data.candidates, "data")
                     for (const pnm of data.candidates) {
                         if (pnm.decision == "pending") {
                             pending.push(pnm)
+
+                        } else if (pnm.decision == "accepted") {
+                            yes.push(pnm)
+                        } else if (pnm.decision == "revisit") {
+                            maybe.push(pnm)
+                        } else if (pnm.decision == "rejected") {
+                            no.push(pnm)
+                        } else {
+                            console.log("invalid decision")
                         }
-                        // } else if (pnm.decision == "accepted") {
-                        //     yes.push(pnm)
-                        // } else if (pnm.decision == "revisit") {
-                        //     maybe.push(pnm)
-                        // } else if (pnm.decision == "rejected") {
-                        //     no.push(pnm)
-                        // } else {
-                        //     console.log("invalid decision")
-                        // }
 
-                        // if (pnm.email == "test@mit.edu") {
-                        //     const unassigned = pnm.userData.feedback
-                        //     for (const f of unassigned) {
+                        if (pnm.email == "test@mit.edu") {
+                            const unassigned = pnm.userData.feedback
+                            for (const f of unassigned) {
 
-                        //     }
-                        // }
+                            }
+                        }
                     }
-                    setYes(yes);
-                    setNo(no);
-                    setMaybe(maybe);
                     setPending(pending);
                     setIsLoading(false);
                 });
@@ -57,26 +52,6 @@ export default function DeliberationsForm() {
                 navigate("/login");
             }
         });
-
-        // fetch("/api/feedback/all-candidates")
-        //     .then((res) => {
-        //         if (res.ok) {
-        //             res.json().then((result) => {
-        //                 if (result.candidates) {
-        //                     setAllApplicants(result.candidates)
-        //                     setIsLoading2(false);
-        //                 }
-        //             }).catch((err) => {
-        //                 navigate("/login");
-        //             });
-        //         }
-        //         else {
-        //             navigatfe("/login")
-        //         }
-        //     })
-        //     .catch((err) => {
-        //         navigate("/login");
-        //     });
     }, []);
 
     const navigate = useNavigate();
@@ -122,7 +97,7 @@ export default function DeliberationsForm() {
                             <div className='col-span-1'>Feedback #</div>
                         </div>
                         <div>
-                            {/* pending */}
+
                             {pnmPending.map((pnm, index) => {
                                 return (
                                     <div className="p-0.5" onClick={() => { setSelectedProfile(pnm); handleProfileOpen() }}>
@@ -131,7 +106,7 @@ export default function DeliberationsForm() {
                                 );
                             })}
                         </div>
-                        {/* <div>
+                        <div>
 
                             {pnmYes.map((pnm, index) => {
                                 return (
@@ -142,7 +117,7 @@ export default function DeliberationsForm() {
                             })}
                         </div>
                         <div>
-   
+
                             {pnmMaybe.map((pnm, index) => {
                                 return (
                                     <div className="p-0.5" onClick={() => { setSelectedProfile(pnm); handleProfileOpen() }}>
@@ -160,7 +135,7 @@ export default function DeliberationsForm() {
                                     </div>
                                 );
                             })}
-                        </div> */}
+                        </div>
                     </div>
                 </div>) :
 

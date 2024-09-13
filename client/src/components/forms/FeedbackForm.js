@@ -189,6 +189,8 @@ export default function FeedbackForm() {
                         <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                             MCG Fall 2024 Feedback Form
                         </h1>
+                        <div><a href="/api/admin/candidate-spreadsheet" target="_blank" className="text-xs rounded-md border border-blue-600 p-2 hover:opacity-60">Download Applicant CSV</a></div>
+                        <div><a href="/api/admin/feedback-spreadsheet" target="_blank" className="text-xs rounded-md border border-blue-600 p-2 hover:opacity-60">Download Feedback CSV</a></div>
 
                         <div className='flex flex-col space-y-4'>
                             <h3>Applicant:</h3>
