@@ -29,15 +29,16 @@ export default function DeliberationsForm() {
                     for (const pnm of data.candidates) {
                         if (pnm.decision == "pending") {
                             pending.push(pnm)
-                        } else if (pnm.decision == "accepted") {
-                            yes.push(pnm)
-                        } else if (pnm.decision == "revisit") {
-                            maybe.push(pnm)
-                        } else if (pnm.decision == "rejected") {
-                            no.push(pnm)
-                        } else {
-                            console.log("invalid decision")
                         }
+                        // } else if (pnm.decision == "accepted") {
+                        //     yes.push(pnm)
+                        // } else if (pnm.decision == "revisit") {
+                        //     maybe.push(pnm)
+                        // } else if (pnm.decision == "rejected") {
+                        //     no.push(pnm)
+                        // } else {
+                        //     console.log("invalid decision")
+                        // }
 
                         // if (pnm.email == "test@mit.edu") {
                         //     const unassigned = pnm.userData.feedback
@@ -88,31 +89,6 @@ export default function DeliberationsForm() {
         setProfileOpen(false);
     }
 
-    const update = () => {
-        fetch("/api/feedback/update", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then((res) => {
-                if (res.ok) {
-                    pass
-                }
-                else {
-                    res.json().then(
-                        (result) => {
-                            setError(result.message);
-                        }
-                    )
-                }
-            }
-            )
-            .catch((err) => {
-                setError(err.message);
-            });
-    }
-
     return (
         isLoading ? <div>Loading Applicants...</div> :
             !profileOpen ?
@@ -155,8 +131,8 @@ export default function DeliberationsForm() {
                                 );
                             })}
                         </div>
-                        <div>
-                            {/* yes */}
+                        {/* <div>
+
                             {pnmYes.map((pnm, index) => {
                                 return (
                                     <div className="p-0.5" onClick={() => { setSelectedProfile(pnm); handleProfileOpen() }}>
@@ -166,7 +142,7 @@ export default function DeliberationsForm() {
                             })}
                         </div>
                         <div>
-                            {/* maybe */}
+   
                             {pnmMaybe.map((pnm, index) => {
                                 return (
                                     <div className="p-0.5" onClick={() => { setSelectedProfile(pnm); handleProfileOpen() }}>
@@ -176,7 +152,7 @@ export default function DeliberationsForm() {
                             })}
                         </div>
                         <div>
-                            {/* no */}
+
                             {pnmNo.map((pnm, index) => {
                                 return (
                                     <div className="p-0.5" onClick={() => { setSelectedProfile(pnm); handleProfileOpen() }}>
@@ -184,7 +160,7 @@ export default function DeliberationsForm() {
                                     </div>
                                 );
                             })}
-                        </div>
+                        </div> */}
                     </div>
                 </div>) :
 
