@@ -26,7 +26,6 @@ export default function DeliberationsForm() {
                     const yes = [];
                     const maybe = [];
                     const no = [];
-                    console.log(data.candidates, "data")
                     for (const pnm of data.candidates) {
                         if (pnm.decision == "pending") {
                             pending.push(pnm)
@@ -56,7 +55,6 @@ export default function DeliberationsForm() {
             } else {
                 navigate("/login");
             }
-            update()
         });
 
         // fetch("/api/feedback/all-candidates")
