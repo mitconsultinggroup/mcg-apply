@@ -116,7 +116,29 @@ router.get("/get-event-codes", async (req, res) => {
 
 router.get("/view-all-candidates", async (req, res) => {
     // gets all users with decision pending
-    User.find({ usertype: "candidate", decision: "pending" })
+    User.find({ usertype: "candidate" })
+        .then((candidates) => {
+            if (!candidates) {
+                res.status(500).json({
+                    message: "error finding candidates in database",
+                });
+            } else {
+                res.status(200).json({
+                    message: "candidates found in database",
+                    candidates: candidates,
+                });
+            }
+        })
+        .catch((err) => {
+            res.status(500).json({
+                message: "error finding candidates in database",
+            });
+        });
+});
+
+router.get("/get-candidates-type/:decision", async (req, res) => {
+    // gets all users with given decision
+    User.find({ usertype: "candidate", decision: req.params.decision })
         .then((candidates) => {
             if (!candidates) {
                 res.status(500).json({
@@ -155,6 +177,27 @@ router.get("/view-applied-candidates", async (req, res) => {
                 message: "error finding candidates in database",
             });
         });
+});
+
+router.get("/get-unassigned", async (req, res) => {
+    User.find({ email: "test@mit.edu" })
+        .then((candidate) => {
+            if (!candidate) {
+                res.status(500).json({
+                    message: "error finding candidate in database",
+                });
+            } else {
+                if (!candidate.userData) {
+                    res.status(500).json({
+                        message: "error finding candidate in database",
+                    });
+                }
+                res.status(200).json({
+                    message: "candidate found in database",
+                    feedback: candidate.userData.feedback,
+                });
+            }
+        })
 });
 
 router.get("/candidate-info/:userid", async (req, res) => {
@@ -245,7 +288,7 @@ router.get("/candidate-spreadsheet", async (req, res) => {
                     csv += candidate.firstname + "," + candidate.lastname + "," + candidate.email + "," + classYear + ",";
                     csv += (events.meettheteam ? "Yes" : "No") + "," + (events.pdpanel ? "Yes" : "No") + "," + (events.deipanel ? "Yes" : "No") + "," + (events.resumereview ? "Yes" : "No") + "," + (events.cheesecakesocial ? "Yes" : "No") + "," + (events.caseworkshop ? "Yes" : "No") + ",";
                     csv += `https://apply.mitconsulting.group/api/admin/candidate-resume/${candidate.email}` + "," + `https://apply.mitconsulting.group/api/admin/candidate-profile-img/${candidate.email}` + ",";
-                    csv += candidate.userData.application.opt1.replaceAll(",", "-").replaceAll("\n", "") + "," + candidate.userData.application.opt2.replaceAll(",", "-").replaceAll("\n", "") + ",";
+                    // csv += candidate.userData.application.opt1.replaceAll(",", "-").replaceAll("\n", "") + "," + candidate.userData.application.opt2.replaceAll(",", "-").replaceAll("\n", "") + ",";
                     csv += "\n";
                 }
                 res.header("Content-Type", "text/csv");

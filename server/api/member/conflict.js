@@ -41,7 +41,6 @@ router.get("/all-candidates", async (req, res) => {
                     message: "candidates found in database",
                     candidates: candidates,
                 });
-                console.log("conflicts found successfully")
             }
         })
         .catch((err) => {

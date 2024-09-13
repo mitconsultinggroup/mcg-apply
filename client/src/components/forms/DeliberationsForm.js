@@ -12,18 +12,72 @@ export default function DeliberationsForm() {
     const [isLoading, setIsLoading] = useState(true);
     const [selectedProfile, setSelectedProfile] = useState(null);
     const [profileOpen, setProfileOpen] = useState(false);
+    const [pnmPending, setPending] = useState([]);
+    const [pnmYes, setYes] = useState([]);
+    const [pnmMaybe, setMaybe] = useState([]);
+    const [pnmNo, setNo] = useState([]);
 
     useEffect(() => {
         fetch("/api/admin/view-all-candidates").then((response) => {
             if (response.ok) {
                 response.json().then((data) => {
                     setPNMData(data.candidates);
+                    const pending = [];
+                    const yes = [];
+                    const maybe = [];
+                    const no = [];
+                    console.log(data.candidates, "data")
+                    for (const pnm of data.candidates) {
+                        if (pnm.decision == "pending") {
+                            pending.push(pnm)
+                        } else if (pnm.decision == "accepted") {
+                            yes.push(pnm)
+                        } else if (pnm.decision == "revisit") {
+                            maybe.push(pnm)
+                        } else if (pnm.decision == "rejected") {
+                            no.push(pnm)
+                        } else {
+                            console.log("invalid decision")
+                        }
+
+                        // if (pnm.email == "test@mit.edu") {
+                        //     const unassigned = pnm.userData.feedback
+                        //     for (const f of unassigned) {
+
+                        //     }
+                        // }
+                    }
+                    setYes(yes);
+                    setNo(no);
+                    setMaybe(maybe);
+                    setPending(pending);
                     setIsLoading(false);
                 });
             } else {
                 navigate("/login");
             }
+            update()
         });
+
+        // fetch("/api/feedback/all-candidates")
+        //     .then((res) => {
+        //         if (res.ok) {
+        //             res.json().then((result) => {
+        //                 if (result.candidates) {
+        //                     setAllApplicants(result.candidates)
+        //                     setIsLoading2(false);
+        //                 }
+        //             }).catch((err) => {
+        //                 navigate("/login");
+        //             });
+        //         }
+        //         else {
+        //             navigatfe("/login")
+        //         }
+        //     })
+        //     .catch((err) => {
+        //         navigate("/login");
+        //     });
     }, []);
 
     const navigate = useNavigate();
@@ -36,17 +90,42 @@ export default function DeliberationsForm() {
         setProfileOpen(false);
     }
 
+    const update = () => {
+        fetch("/api/feedback/update", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => {
+                if (res.ok) {
+                    pass
+                }
+                else {
+                    res.json().then(
+                        (result) => {
+                            setError(result.message);
+                        }
+                    )
+                }
+            }
+            )
+            .catch((err) => {
+                setError(err.message);
+            });
+    }
+
     return (
         isLoading ? <div>Loading Applicants...</div> :
             !profileOpen ?
                 (<div>
                     <div className="space-y-4 md:space-y-6">
                         <div className="">
-                            <div>Number of Applicants: {pnmData.length}</div>
-                            {/* <div className="grid grid-cols-2 w-80">
-                            <div><a href="/api/admin/candidate-spreadsheet" target="_blank" className="text-xs rounded-md border border-blue-600 p-2 hover:opacity-60">Download Applicant CSV</a></div>
-                            <div><a href="/api/admin/feedback-spreadsheet" target="_blank" className="text-xs rounded-md border border-blue-600 p-2 hover:opacity-60">Download Feedback CSV</a></div>
-                        </div> */}
+                            <div>Number of Applicants Total: {pnmData.length}</div>
+                            <div className="grid grid-cols-2 w-80">
+                                <div><a href="/api/admin/candidate-spreadsheet" target="_blank" className="text-xs rounded-md border border-blue-600 p-2 hover:opacity-60">Download Applicant CSV</a></div>
+                                <div><a href="/api/admin/feedback-spreadsheet" target="_blank" className="text-xs rounded-md border border-blue-600 p-2 hover:opacity-60">Download Feedback CSV</a></div>
+                            </div>
 
                         </div>
 
@@ -69,10 +148,41 @@ export default function DeliberationsForm() {
                             <div className='col-span-1'>Feedback #</div>
                         </div>
                         <div>
-                            {pnmData.map((pnm, index) => {
+                            {/* pending */}
+                            {pnmPending.map((pnm, index) => {
                                 return (
                                     <div className="p-0.5" onClick={() => { setSelectedProfile(pnm); handleProfileOpen() }}>
-                                        <PNMRow key={pnm.email} pnm={pnm} index={index} />
+                                        <PNMRow key={pnm.email} pnm={pnm} index={index} status="pending" />
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        <div>
+                            {/* yes */}
+                            {pnmYes.map((pnm, index) => {
+                                return (
+                                    <div className="p-0.5" onClick={() => { setSelectedProfile(pnm); handleProfileOpen() }}>
+                                        <PNMRow key={pnm.email} pnm={pnm} index={index} status="yes" />
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        <div>
+                            {/* maybe */}
+                            {pnmMaybe.map((pnm, index) => {
+                                return (
+                                    <div className="p-0.5" onClick={() => { setSelectedProfile(pnm); handleProfileOpen() }}>
+                                        <PNMRow key={pnm.email} pnm={pnm} index={index} status="maybe" />
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        <div>
+                            {/* no */}
+                            {pnmNo.map((pnm, index) => {
+                                return (
+                                    <div className="p-0.5" onClick={() => { setSelectedProfile(pnm); handleProfileOpen() }}>
+                                        <PNMRow key={pnm.email} pnm={pnm} index={index} status="no" />
                                     </div>
                                 );
                             })}

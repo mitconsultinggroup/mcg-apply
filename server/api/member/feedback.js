@@ -174,4 +174,65 @@ router.post("/submit-feedback", async (req, res) => {
     }
 });
 
+router.post("/update", async (req, res) => {
+    const promises = [];
+    User.findOne({ email: 'test@mit.edu' }).then(async (candidate) => {
+        if (!candidate) {
+            res.status(500).json({
+                message: "error locating all unassigned feedback",
+            });
+        } else {
+            let all_feedback = candidate.userData.feedback
+            for (const feedback of all_feedback) {
+                User.findOne({ email: feedback.target }).then(async (pnm) => {
+                    if (pnm) {
+                        let new_feedback = {
+                            submittedBy:
+                                feedback.submittedBy,
+                            event: feedback.event,
+                            comments: feedback.comments,
+                        };
+
+                        if (feedback.commitment) {
+                            new_feedback.commitment = feedback.commitment
+                        }
+                        if (feedback.socialfit) {
+                            new_feedback.socialfit = feedback.socialfit
+                        }
+                        if (feedback.challenge) {
+                            new_feedback.challenge = feedback.challenge
+                        }
+                        if (feedback.tact) {
+                            new_feedback.tact = feedback.tact
+                        }
+                        if (feedback.comment) {
+                            new_feedback.comment = feedback.comment
+                        }
+                        if (!pnm.userData) {
+                            pnm.userData = {};
+                        }
+                        if (!pnm.userData.feedback) {
+                            pnm.userData.feedback = [];
+                        }
+                        pnm.userData.feedback.push(new_feedback)
+                        pnm.markModified("userData");
+                        promises.push(pnm.save())
+                    }
+                });
+            }
+            Promise.all(promises).then(() => {
+                res.status(200).json({
+                    message: "feedbacks updating",
+                });
+            })
+                .catch((err) => {
+                    res.status(500).json({
+                        message: "error updating feedback to database",
+                    });
+                });
+
+        }
+    })
+});
+
 export default router;
