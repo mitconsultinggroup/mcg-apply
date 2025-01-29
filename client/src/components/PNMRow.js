@@ -12,7 +12,7 @@ export default function PNMProfile({ pnm, index }) {
     const [resume, setResume] = useState(false);
     const [profileImg, setProfileImg] = useState(false);
     const [profile, setProfile] = useState(false);
-    const [isProfileOpen,setProfileOpen] = useState(false);
+    const [isProfileOpen, setProfileOpen] = useState(false);
 
     const openResume = () => {
         window.open(`api/admin/candidate-resume/${pnm.email}`, "_blank");
@@ -20,24 +20,25 @@ export default function PNMProfile({ pnm, index }) {
     const openProfileImg = () => {
         window.open(`api/admin/candidate-profile-img/${pnm.email}`, "_blank");
     }
-    const openProfile = () => {w
+    const openProfile = () => {
+
         // console.log("hello");
         fetch(`api/admin/candidate-info/${pnm.userid}`).then((response) => {
-                if (response.ok) {
-                    response.json().then((data)=>{
-                        console.log(data.candidate);
-                    })
-                }
-            })
+            if (response.ok) {
+                response.json().then((data) => {
+                    console.log(data.candidate);
+                })
+            }
+        })
         setProfileOpen(true);
     };
-    const closeProfile = () => {setProfileOpen(false)};
- 
+    const closeProfile = () => { setProfileOpen(false) };
+
     useEffect(() => {
         if (pnm.userData) {
             if (pnm.userData.events) {
                 setEvents(pnm.userData.events);
-            } 
+            }
         } if (pnm.userData) {
             if (pnm.userData.application) {
                 setClassYear(pnm.userData.application.classYear);
@@ -47,7 +48,7 @@ export default function PNMProfile({ pnm, index }) {
                     setProfile(true);
                 }
             }
-        } 
+        }
     })
 
     return (
@@ -69,7 +70,7 @@ export default function PNMProfile({ pnm, index }) {
             <div className='col-span-1'>{events.resumereview ? "Yes" : "-"}</div>
             <div className='col-span-1'>{events.cheesecakesocial ? "Yes" : "-"}</div>
             <div className='col-span-1'>{events.caseworkshop ? "Yes" : "-"}</div>
-            <div className='col-span-1'>{pnm.userData.feedback.length}</div>
+            {/* <div className='col-span-1'>{pnm.userData.feedback.length}</div> */}
         </div>
     )
 }

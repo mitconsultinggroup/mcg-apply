@@ -6,7 +6,7 @@ import SignUp from "./routes/signup.js";
 import Application from "./routes/application.js";
 import Events from "./routes/events.js";
 import PublicEvents from "./routes/publicEvents.js";
-import Feedback from "./routes/feedback.js";
+// import Feedback from "./routes/feedback.js";
 import Logout from "./routes/logout.js";
 import Admin from "./routes/admin.js";
 import Deliberations from "./routes/deliberations.js";
@@ -22,10 +22,10 @@ const router = createBrowserRouter([
     element: <Events />,
   },
 
-  {
-    path: "/feedback",
-    element: <Feedback />,
-  },
+  // {
+  //   path: "/feedback",
+  //   element: <Feedback />,
+  // },
 
   {
     path: "/publicevents",

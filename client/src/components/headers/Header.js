@@ -47,7 +47,7 @@ export default function Header({ firstname, usertype }) {
                 </span>
               </Link>
             </li>
-            {usertype !== "candidate" ?
+            {/* {usertype !== "candidate" ?
               <li className="nav-item">
                 <Link
                   to="/feedback"
@@ -57,7 +57,21 @@ export default function Header({ firstname, usertype }) {
                     Feedback
                   </span>
                 </Link>
-              </li> : <li className="nav-item">
+              </li> :
+              <li className="nav-item">
+                <Link
+                  to="/application"
+                  className="px-3 py-1 flex items-center leading-snug text-white hover:opacity-75"
+                >
+                  <span className="block pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0">
+                    Apply
+                  </span>
+                </Link>
+              </li>} */}
+            {usertype !== "candidate" ?
+              <li className="nav-item">
+              </li> :
+              <li className="nav-item">
                 <Link
                   to="/application"
                   className="px-3 py-1 flex items-center leading-snug text-white hover:opacity-75"
@@ -67,6 +81,7 @@ export default function Header({ firstname, usertype }) {
                   </span>
                 </Link>
               </li>}
+
             <li className="nav-item">
               <Link
                 to="/logout"

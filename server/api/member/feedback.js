@@ -49,69 +49,72 @@ router.get("/all-candidates", async (req, res) => {
         });
 });
 
-router.post("/submit-feedback", async (req, res) => {
-    if (!req.body.candidate) {
-        res.status(400).json({
-            message: "candidate selection required",
-        });
-        return;
-    }
 
-    if (req.body.candidate) {
-        User.findOne({ email: req.body.candidate }).then(async (candidate) => {
-            if (!candidate) {
-                res.status(500).json({
-                    message: "error finding candidate in database",
-                });
-            } else {
-                let feedback = {
-                    submittedBy:
-                        req.user.firstname + " " + req.user.lastname,
-                    event: req.body.event,
-                    comments: req.body.comments,
-                };
-                if (req.body.scores.commitment) {
-                    feedback.commitment = req.body.scores.commitment
-                }
-                if (req.body.scores.socialfit) {
-                    feedback.socialfit = req.body.scores.socialfit
-                }
-                if (req.body.scores.challenge) {
-                    feedback.challenge = req.body.scores.challenge
-                }
-                if (req.body.scores.tact) {
-                    feedback.tact = req.body.scores.tact
-                }
-                if (req.body.comment) {
-                    feedback.comment = req.body.comment
-                }
-                if (!candidate.userData) {
-                    candidate.userData = {};
-                }
-                if (!candidate.userData.feedback) {
-                    candidate.userData.feedback = [];
-                }
-                candidate.userData.feedback.push(feedback);
-                candidate.markModified("userData");
-                candidate
-                    .save()
-                    .then(() => {
-                        res.status(200).json({
-                            message: "feedback submitted",
-                        });
-                    })
-                    .catch((err) => {
-                        res.status(500).json({
-                            message: "error saving feedback to database",
-                        });
-                    });
-            }
-        });
-    } else {
-        return res.status(400).json({
-            message: "candidate selection required",
-        });
-    }
-});
+// commented out for spring 25
+
+// router.post("/submit-feedback", async (req, res) => {
+//     if (!req.body.candidate) {
+//         res.status(400).json({
+//             message: "candidate selection required",
+//         });
+//         return;
+//     }
+
+//     if (req.body.candidate) {
+//         User.findOne({ email: req.body.candidate }).then(async (candidate) => {
+//             if (!candidate) {
+//                 res.status(500).json({
+//                     message: "error finding candidate in database",
+//                 });
+//             } else {
+//                 let feedback = {
+//                     submittedBy:
+//                         req.user.firstname + " " + req.user.lastname,
+//                     event: req.body.event,
+//                     comments: req.body.comments,
+//                 };
+//                 if (req.body.scores.commitment) {
+//                     feedback.commitment = req.body.scores.commitment
+//                 }
+//                 if (req.body.scores.socialfit) {
+//                     feedback.socialfit = req.body.scores.socialfit
+//                 }
+//                 if (req.body.scores.challenge) {
+//                     feedback.challenge = req.body.scores.challenge
+//                 }
+//                 if (req.body.scores.tact) {
+//                     feedback.tact = req.body.scores.tact
+//                 }
+//                 if (req.body.comment) {
+//                     feedback.comment = req.body.comment
+//                 }
+//                 if (!candidate.userData) {
+//                     candidate.userData = {};
+//                 }
+//                 if (!candidate.userData.feedback) {
+//                     candidate.userData.feedback = [];
+//                 }
+//                 candidate.userData.feedback.push(feedback);
+//                 candidate.markModified("userData");
+//                 candidate
+//                     .save()
+//                     .then(() => {
+//                         res.status(200).json({
+//                             message: "feedback submitted",
+//                         });
+//                     })
+//                     .catch((err) => {
+//                         res.status(500).json({
+//                             message: "error saving feedback to database",
+//                         });
+//                     });
+//             }
+//         });
+//     } else {
+//         return res.status(400).json({
+//             message: "candidate selection required",
+//         });
+//     }
+// });
 
 export default router;

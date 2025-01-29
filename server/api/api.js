@@ -4,7 +4,7 @@ import events from "./candidate/events.js";
 import application from "./candidate/application.js";
 import me from "./me.js";
 import admin from "./admin.js";
-import feedback from "./member/feedback.js";
+// import feedback from "./member/feedback.js";
 
 const router = express.Router();
 
@@ -23,7 +23,7 @@ router.use("/me", me);
 // Admin routes (set event codes)
 router.use("/admin", admin);
 
-// Feedback routes (submit feedback)
-router.use("/feedback", feedback);
+// // Feedback routes (submit feedback)
+// router.use("/feedback", feedback);
 
 export default router;

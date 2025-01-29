@@ -67,6 +67,9 @@ router.post("/signup", async (req, res) => {
     decision: "pending",
   });
 
+
+
+
   newUser
     .save()
     .then((saved) => {
