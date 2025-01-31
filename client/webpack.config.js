@@ -83,7 +83,7 @@ const plugins = [
     }),
     new HtmlWebpackPlugin({
         template: here("/public/index.html"),
-        // favicon: here("/public/favicon.ico"),
+        favicon: here("/public/favicon.ico"),
     }),
 ];
 
