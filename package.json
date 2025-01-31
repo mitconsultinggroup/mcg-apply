@@ -4,12 +4,11 @@
   "description": "Recruitment Platform for the MIT Consulting Group",
   "main": "server/index.js",
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "serve -s build",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "babel-node": "babel-node ./server/index.js",
+    "dev": "concurrently \"npm run server\" \"cd client && npm start\"",
+    "start": "node index.js",
+    "server": "npm run babel-node",
+    "watch": "npx tailwindcss -i ./client/src/stylesheets/input.css -o ./client/src/stylesheets/output.css --watch"
   },
   "dependencies": {
     "@babel/register": "^7.21.0",
@@ -24,7 +23,6 @@
     "mongoose": "^7.2.1",
     "react-hot-loader": "^4.13.1",
     "sass": "^1.62.1",
-    "serve": "^14.2.4",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
