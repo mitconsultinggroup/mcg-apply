@@ -4,11 +4,12 @@
   "description": "Recruitment Platform for the MIT Consulting Group",
   "main": "server/index.js",
   "scripts": {
-    "babel-node": "babel-node ./server/index.js",
-    "dev": "concurrently \"npm run server\" \"cd client && npm start\"",
-    "start": "concurrently \"npm run server\" \"cd client && export NODE_ENV=\"production\" && npm run build\"",
-    "server": "npm run babel-node",
-    "watch": "npx tailwindcss -i ./client/src/stylesheets/input.css -o ./client/src/stylesheets/output.css --watch"
+    "dev": "react-scripts start",
+    "start": "serve -s build",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "@babel/register": "^7.21.0",
@@ -23,13 +24,8 @@
     "mongoose": "^7.2.1",
     "react-hot-loader": "^4.13.1",
     "sass": "^1.62.1",
-    "uuid": "^9.0.0",
-    "@babel/cli": "^7.21.5",
-    "@babel/core": "^7.22.1",
-    "@babel/node": "^7.22.1",
-    "@babel/preset-env": "^7.22.2",
-    "@babel/preset-react": "^7.22.0",
-    "babel-loader": "^9.1.2"
+    "serve": "^14.2.4",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.5",
