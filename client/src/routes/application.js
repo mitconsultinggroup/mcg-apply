@@ -1,9 +1,9 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+import React from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
-import Header from '../components/headers/Header';
-import ApplicationForm from '../components/forms/ApplicationForm';
+import Header from "../components/headers/Header";
+import ApplicationForm from "../components/forms/ApplicationForm";
 
 export default function Application() {
     const [isLoading, setIsLoading] = useState(true);
@@ -12,19 +12,16 @@ export default function Application() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("/api/me").then(
-            (response) => {
-                if (response.ok) {
-                    response.json().then(data => {
-                        setUserData(data.data);
-                        setIsLoading(false);
-                    })
-                }
-                else {
-                    navigate("/login")
-                }
+        fetch("/api/me").then((response) => {
+            if (response.ok) {
+                response.json().then((data) => {
+                    setUserData(data.data);
+                    setIsLoading(false);
+                });
+            } else {
+                navigate("/login");
             }
-        )
+        });
     }, [navigate]);
 
     return (
