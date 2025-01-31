@@ -4,8 +4,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-import FeedbackCard from "../FeedbackCard.js";
-
 // const navigate = useNavigate();
 
 
@@ -13,7 +11,7 @@ export default function ProfileForm(userid) {
     const [isLoading, setIsLoading] = useState(true);
     const [pnmData, setPNMData] = useState([]);
     const [application, setApp] = useState([]);
-    const [feedback, setFeedback] = useState([]);
+    // const [feedback, setFeedback] = useState([]);
     const [appsubmitted, setAppSubmitted] = useState(false);
     const [decided, setDecided] = useState(false);
     const [error, setError] = useState("");
@@ -26,14 +24,14 @@ export default function ProfileForm(userid) {
                     setIsLoading(false);
                     if (data.candidate.userData.application) {
                         setApp(data.candidate.userData.application);
-                        setFeedback(data.candidate.userData.feedback)
+                        // setFeedback(data.candidate.userData.feedback)
                         setPNMData(data.candidate);
                         setAppSubmitted(true);
                         console.log("success2")
                     }
                     else {
                         console.log("no application");
-                        setFeedback(data.candidate.userData.feedback)
+                        // setFeedback(data.candidate.userData.feedback)
                     }
                 })
             }
@@ -111,7 +109,6 @@ export default function ProfileForm(userid) {
                     </div>
 
                     <div className="w-sixty bg-white border border-gray-200 rounded-lg shadow relative mt-4">
-                        {/* <FeedbackCard feedback={feedback} /> */}
                     </div>
                     <div className="w-sixty p-4">
                         <div class="btn-group w-100 border border-gray-300" role="group" style={{ height: "30px" }} >
@@ -127,8 +124,6 @@ export default function ProfileForm(userid) {
                     </div>
 
                 </div> :
-                <div>
-                    // <FeedbackCard feedback={feedback} />
-                </div>
+                <div> No application </div>
     );
 };

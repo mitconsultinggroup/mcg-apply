@@ -228,7 +228,7 @@ router.get("/candidate-spreadsheet", async (req, res) => {
                 });
             } else {
                 // Create a csv of all the candidates
-                let csv = "First Name,Last Name,Email,Class Year,Meet the Team,DEI Panel,Resume Review,Cheesecake Social,Case Workshop,Resume,Profile,Hope to Gain,Past Experience\n";
+                let csv = "First Name,Last Name,Email,Class Year,Meet the Team,PD Panel,DEI Panel,Resume Review,Cheesecake Social,Case Workshop,Resume,Image,Why MCG\n";
                 for (let i = 0; i < candidates.length; i++) {
                     let candidate = candidates[i];
                     let classYear = ""
@@ -244,8 +244,10 @@ router.get("/candidate-spreadsheet", async (req, res) => {
                     }
                     csv += candidate.firstname + "," + candidate.lastname + "," + candidate.email + "," + classYear + ",";
                     csv += (events.meettheteam ? "Yes" : "No") + "," + (events.pdpanel ? "Yes" : "No") + "," + (events.deipanel ? "Yes" : "No") + "," + (events.resumereview ? "Yes" : "No") + "," + (events.cheesecakesocial ? "Yes" : "No") + "," + (events.caseworkshop ? "Yes" : "No") + ",";
-                    csv += `https://apply.mitconsulting.group/api/admin/candidate-resume/${candidate.email}` + "," + `https://apply.mitconsulting.group/api/admin/candidate-profile-img/${candidate.email}` + ",";
-                    csv += candidate.userData.application.opt1.replaceAll(",", "-").replaceAll("\n", "") + "," + candidate.userData.application.opt2.replaceAll(",", "-").replaceAll("\n", "") + ",";
+                    csv += `https://applymcg.org/api/admin/candidate-resume/${candidate.email}` + "," + `https://applymcg.org/api/admin/candidate-profile-img/${candidate.email}` + ",";
+                    if (candidate.userData && candidate.userData.application) {
+                        csv += candidate.userData.application.opt1.replaceAll(",", "-").replaceAll("\n", "") + ",";
+                    }
                     csv += "\n";
                 }
                 res.header("Content-Type", "text/csv");
