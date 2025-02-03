@@ -42,6 +42,7 @@ import api from "./api/api.js";
 app.use("/api", api);
 
 const port = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
 
 // Serve production build
 app.use(express.static(path.join(__dirname, "../client/public/dist/")))
