@@ -11,28 +11,28 @@ const app = express();
 
 // Helmet
 app.use(
-    helmet({
-        contentSecurityPolicy: false,
-        crossOriginEmbedderPolicy: false,
-    })
+  helmet({
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false,
+  })
 );
 
 // Body Parser
-app.use(bodyParser.json(
-    {
-        limit: "5mb",
-    }
-));
+app.use(
+  bodyParser.json({
+    limit: "5mb",
+  })
+);
 
 app.use((err, req, res, next) => {
-    if (err) {
-        return res.status(413).json({
-            message: "file too large, please upload a smaller profile picture/resume",
-        })
-    } else {
-        next()
-    }
-})
+  if (err) {
+    return res.status(413).json({
+      message: "file too large, please upload a smaller profile picture/resume",
+    });
+  } else {
+    next();
+  }
+});
 
 // Cookie Parser
 app.use(cookieParser());
@@ -42,15 +42,13 @@ import api from "./api/api.js";
 app.use("/api", api);
 
 const port = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+app.listen(port, () => console.log(`Server running on port: ${port}`));
 
 // Serve production build
-app.use(express.static(path.join(__dirname, "../client/public/dist/")))
+app.use(express.static(path.join(__dirname, "../client/public/dist/")));
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/public/dist/index.html"));
+  res.sendFile(path.join(__dirname, "../client/public/dist/index.html"));
 });
 
-app.listen(port, () =>
-    console.log(`Server started on port: 5000`)
-);
+app.listen(port, () => console.log(`Server started on port: 5000`));
