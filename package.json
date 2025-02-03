@@ -7,6 +7,7 @@
     "babel-node": "babel-node ./server/index.js",
     "dev": "concurrently \"npm run server\" \"cd client && npm start\"",
     "start": "concurrently \"npm run server\" \"cd client && export NODE_ENV=\"production\" && npm run build\"",
+    "web": "node index.js",
     "server": "npm run babel-node",
     "watch": "npx tailwindcss -i ./client/src/stylesheets/input.css -o ./client/src/stylesheets/output.css --watch"
   },

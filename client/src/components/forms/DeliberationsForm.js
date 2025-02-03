@@ -43,10 +43,10 @@ export default function DeliberationsForm() {
                     <div className="space-y-4 md:space-y-6">
                         <div className="">
                             <div>Number of Applicants: {pnmData.length}</div>
-                            {/* <div className="grid grid-cols-2 w-80">
-                            <div><a href="/api/admin/candidate-spreadsheet" target="_blank" className="text-xs rounded-md border border-blue-600 p-2 hover:opacity-60">Download Applicant CSV</a></div>
-                            <div><a href="/api/admin/feedback-spreadsheet" target="_blank" className="text-xs rounded-md border border-blue-600 p-2 hover:opacity-60">Download Feedback CSV</a></div>
-                        </div> */}
+                            <div className="grid grid-cols-2 w-80">
+                                <div><a href="/api/admin/candidate-spreadsheet" target="_blank" className="text-xs rounded-md border border-blue-600 p-2 hover:opacity-60">Download Applicant CSV</a></div>
+                                {/* <div><a href="/api/admin/feedback-spreadsheet" target="_blank" className="text-xs rounded-md border border-blue-600 p-2 hover:opacity-60">Download Feedback CSV</a></div> */}
+                            </div>
 
                         </div>
 
