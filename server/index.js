@@ -43,7 +43,7 @@ app.use("/api", api);
 
 const port = process.env.PORT || 8080;
 // app.listen(port, () => console.log(`Server running on port: ${port}`));
-const server = app.listen(PORT, () => {
+const server = app.listen(port, () => {
   console.log(`✅ Server running on port: ${port}`);
 });
 
