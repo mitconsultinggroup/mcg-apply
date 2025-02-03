@@ -43,6 +43,28 @@ app.use("/api", api);
 
 const port = process.env.PORT || 8080;
 // app.listen(port, () => console.log(`Server running on port: ${port}`));
+const server = app.listen(PORT, () => {
+  console.log(`✅ Server running on port: ${port}`);
+});
+
+// Handle errors (prevents crashes)
+server.on("error", (err) => {
+  if (err.code === "EADDRINUSE") {
+    console.error(`❌ Port ${port} is already in use!`);
+    process.exit(1);
+  } else {
+    console.error(err);
+  }
+});
+
+// Handle process termination (ensures the port is released properly)
+process.on("SIGINT", () => {
+  console.log("🔴 Shutting down server gracefully...");
+  server.close(() => {
+    console.log("✅ Server closed. Exiting process.");
+    process.exit(0);
+  });
+});
 
 // Serve production build
 app.use(express.static(path.join(__dirname, "../client/public/dist/")));
