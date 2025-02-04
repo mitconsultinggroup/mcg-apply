@@ -36,7 +36,7 @@ export default function Header({ firstname, usertype }) {
             (navbarOpen ? " flex" : " hidden")
           }
         >
-          {usertype !== "candidate" ?
+          { usertype !== "candidate" ?
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto mt-2 lg:mt-0">
               <li className="nav-item">
                 <Link

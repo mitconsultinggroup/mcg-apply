@@ -303,38 +303,38 @@ router.get("/candidate-spreadsheet", async (req, res) => {
         });
 });
 
-router.get("/feedback-spreadsheet", async (req, res) => {
-    User.find({ usertype: "candidate" })
-        .then((candidates) => {
-            if (!candidates) {
-                res.status(500).json({
-                    message: "error finding candidates in database",
-                });
-            } else {
-                // Create a csv of all the candidates
-                let csv = "First Name,Last Name,Email,Submitted By, Event, Comments, Commitment, Social, Challenge, Tact\n";
-                for (let i = 0; i < candidates.length; i++) {
-                    let candidate = candidates[i];
-                    if (!candidate || !candidate.userData || !candidate.userData.feedback) {
-                        continue;
-                    }
-                    for (let j = 0; j < candidate.userData.feedback.length; j++) {
-                        let feedback = candidate.userData.feedback[j];
-                        csv += candidate.firstname + "," + candidate.lastname + "," + candidate.email + "," + feedback.submittedBy + "," + feedback.event + "," + feedback.comments.replaceAll(",", "-").replaceAll("\n", "").replaceAll("=", "equals") + "," + feedback.commitment + "," + feedback.socialfit + "," + feedback.challenge + "," + feedback.tact + ",";
-                        csv += "\n";
-                    }
-                }
-                res.header("Content-Type", "text/csv");
-                return res.end(csv);
-            }
-        })
-        .catch((err) => {
-            console.log(err)
-            res.status(500).json({
-                message: "error finding candidates in database",
-            });
-        });
-});
+// router.get("/feedback-spreadsheet", async (req, res) => {
+//     User.find({ usertype: "candidate" })
+//         .then((candidates) => {
+//             if (!candidates) {
+//                 res.status(500).json({
+//                     message: "error finding candidates in database",
+//                 });
+//             } else {
+//                 // Create a csv of all the candidates
+//                 let csv = "First Name,Last Name,Email,Submitted By, Event, Comments, Commitment, Social, Challenge, Tact\n";
+//                 for (let i = 0; i < candidates.length; i++) {
+//                     let candidate = candidates[i];
+//                     if (!candidate || !candidate.userData || !candidate.userData.feedback) {
+//                         continue;
+//                     }
+//                     for (let j = 0; j < candidate.userData.feedback.length; j++) {
+//                         let feedback = candidate.userData.feedback[j];
+//                         csv += candidate.firstname + "," + candidate.lastname + "," + candidate.email + "," + feedback.submittedBy + "," + feedback.event + "," + feedback.comments.replaceAll(",", "-").replaceAll("\n", "").replaceAll("=", "equals") + "," + feedback.commitment + "," + feedback.socialfit + "," + feedback.challenge + "," + feedback.tact + ",";
+//                         csv += "\n";
+//                     }
+//                 }
+//                 res.header("Content-Type", "text/csv");
+//                 return res.end(csv);
+//             }
+//         })
+//         .catch((err) => {
+//             console.log(err)
+//             res.status(500).json({
+//                 message: "error finding candidates in database",
+//             });
+//         });
+// });
 
 
 

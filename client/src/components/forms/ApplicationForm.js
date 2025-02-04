@@ -115,12 +115,12 @@ export default function ApplicationForm() {
         !open ? <div className="space-y-4 md:space-y-6">
             <div>
                 <h3>
-                    Our application for the Fall 2024 cycle is closed.
+                    Our application for the Spring 2025 cycle is closed.
                     <br></br>
                     <br></br>
                     If you have any questions or concerns,
-                    please reach out to Emma Chen (
-                    <a className="hover:text-blue-600" href="mailto:emmachen@mit.edu">emmachen@mit.edu</a>).
+                    please reach out to Alejandro Villanueva (
+                    <a className="hover:text-blue-600" href="mailto:ale12@mit.edu">ale12@mit.edu</a>).
                 </h3>
             </div>
         </div>
@@ -135,8 +135,8 @@ export default function ApplicationForm() {
                         <br></br>
                         <br></br>
                         If you have any technical difficulties,
-                        please reach out to Emma Chen (
-                        <a className="hover:text-blue-600" href="mailto:emmachen@mit.edu">emmachen@mit.edu</a>).
+                        please reach out to Alejandro Villanueva (
+                        <a className="hover:text-blue-600" href="mailto:ale12@mit.edu">ale12@mit.edu</a>).
                     </h3>
                 </div>
                 <div>
