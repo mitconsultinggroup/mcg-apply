@@ -4,9 +4,10 @@
   "description": "Recruitment Platform for the MIT Consulting Group",
   "main": "server/index.js",
   "scripts": {
+    "babel-node": "babel-node ./server/index.js",
     "dev": "concurrently \"npm run server\" \"cd client && npm start\"",
     "start": "concurrently \"npm run server\" \"cd client && export NODE_ENV=\"production\" && npm run build\"",
-    "web": "node index.js",
+    "server": "npm run babel-node",
     "watch": "npx tailwindcss -i ./client/src/stylesheets/input.css -o ./client/src/stylesheets/output.css --watch"
   },
   "dependencies": {
@@ -22,15 +23,21 @@
     "mongoose": "^7.2.1",
     "react-hot-loader": "^4.13.1",
     "sass": "^1.62.1",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.22.1",
+    "@babel/node": "^7.22.1",
+    "@babel/preset-env": "^7.22.2",
+    "@babel/preset-react": "^7.22.0",
+    "babel-loader": "^9.1.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.26.4",
-    "@babel/core": "^7.26.7",
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.22.1",
     "@babel/node": "^7.22.1",
-    "@babel/preset-env": "^7.26.7",
+    "@babel/preset-env": "^7.22.2",
     "@babel/preset-react": "^7.22.0",
-    "babel-loader": "^9.2.1",
+    "babel-loader": "^9.1.2",
     "css-loader": "^6.7.4",
     "html-webpack-plugin": "^5.5.1",
     "mini-css-extract-plugin": "^2.7.6",
@@ -38,8 +45,8 @@
     "sass-loader": "^13.3.0",
     "style-loader": "^3.3.3",
     "tailwindcss": "^3.3.2",
-    "webpack": "^5.97.1",
-    "webpack-cli": "^5.1.4",
+    "webpack": "^5.84.1",
+    "webpack-cli": "^5.1.1",
     "webpack-dev-middleware": "^6.1.1",
     "webpack-dev-server": "^4.15.0",
     "webpack-hot-middleware": "^2.25.3"
