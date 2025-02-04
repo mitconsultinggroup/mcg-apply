@@ -4,10 +4,12 @@
   "description": "MCG Apply Frontend",
   "main": "index.js",
   "scripts": {
-    "set_env_dev": "SET \"NODE_ENV=dev\"",
-    "set_env_prod": "SET \"NODE_ENV=production\"",
-    "start": "webpack-dev-server --config webpack.config.js --mode=development --open --hot \"true\" ",
-    "build": "rimraf dist && export NODE_ENV=\"production\" && webpack --mode=production --config webpack.config.js"
+    "babel-node": "babel-node ./server/index.js",
+    "dev": "concurrently \"npm run server\" \"cd client && npm start\"",
+    "start": "concurrently \"npm run server\" \"cd client && export NODE_ENV=\"production\" && npm run build\"",
+    "web": "node index.js",
+    "server": "npm run babel-node",
+    "watch": "npx tailwindcss -i ./client/src/stylesheets/input.css -o ./client/src/stylesheets/output.css --watch"
   },
   "dependencies": {
     "react": "^18.2.0",
