@@ -72,4 +72,4 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/public/dist/index.html"));
 });
 
-app.listen(port, () => console.log(`Server started on port: 5000`));
+// app.listen(port, () => console.log(`Server started on port: 5000`));
