@@ -4,6 +4,7 @@
   "description": "Recruitment Platform for the MIT Consulting Group",
   "main": "server/index.js",
   "scripts": {
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "babel-node": "babel-node ./server/index.js",
     "dev": "concurrently \"npm run server\" \"cd client && npm start\"",
     "start": "concurrently \"npm run server\" \"cd client && export NODE_ENV=\"production\" && npm run build\"",
