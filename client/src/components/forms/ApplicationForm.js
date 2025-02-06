@@ -115,7 +115,7 @@ export default function ApplicationForm() {
         !open ? <div className="space-y-4 md:space-y-6">
             <div>
                 <h3>
-                    Our application for the Fall 2024 cycle is closed.
+                    Our application for the Fall 2025 cycle is closed.
                     <br></br>
                     <br></br>
                     If you have any questions or concerns,
