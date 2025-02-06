@@ -37,7 +37,7 @@ export default function Application() {
                     <div className="w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-2xl lg:max-w-4xl xl:p-0 ">
                         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                             <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-                                MCG Fall 2025 Application
+                                MCG Spring 2025 Application
                             </h1>
                             <ApplicationForm />
                         </div>
